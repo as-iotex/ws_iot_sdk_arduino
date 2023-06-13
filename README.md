@@ -44,7 +44,7 @@ int iotex_mqtt_subscription(unsigned char *topic)
     return client.subscribe((const char *)topic);
 }
 
-void app_main(void) {
+void setup() {
 
     .......
     iotex_wsiotsdk_init(iotex_time_set_func, iotex_mqtt_pubscription, iotex_mqtt_subscription);
