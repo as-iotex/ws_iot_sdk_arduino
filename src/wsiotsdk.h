@@ -27,6 +27,14 @@ class Devnet
 };
 } // namespace iotex
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+int iotex_wsiotsdk_init(iotex_gettime get_time_func, iotex_mqtt_pub mqtt_pub, iotex_mqtt_sub mqtt_sub);
+#ifdef __cplusplus
+}
+#endif
+
 extern iotex::Devnet devnet_client;
 
 #endif
