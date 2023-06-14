@@ -4,14 +4,29 @@
 #include "psa/crypto.h"
 #include "application/devnet/iotex_dev_access.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace iotex
+{
+class Devnet
+{
+  private:
 
-int iotex_wsiotsdk_init(iotex_gettime get_time_func, iotex_mqtt_pub mqtt_pub, iotex_mqtt_sub mqtt_sub);
 
-#ifdef __cplusplus
-}
-#endif
+  public:
+
+    void begin(void);
+    void begin(iotex_gettime time_f, iotex_mqtt_pub pub_f, iotex_mqtt_sub sub_f);
+    void setTimeFunction(iotex_gettime time_f);
+    void setMQTTFunctions(iotex_mqtt_pub pub_f, iotex_mqtt_sub sub_f);
+    void setDevnetToken(const char token[], int len);
+    void setDevnetMQTTTopic(const char topic[], int len, int location = 0);
+    void send(void *buf, unsigned int len, enum UserData_Type type);
+
+    char* getMQTTConnectAddr(void);
+    int getMQTTConnectPort(void);    
+
+};
+} // namespace iotex
+
+extern iotex::Devnet devnet_client;
 
 #endif
