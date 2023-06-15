@@ -3,7 +3,7 @@
 
 #include "iotex/build_info.h"
 
-#include "server/crypto.h"
+#include "svc/crypto.h"
 
 /** Constant-time buffer comparison
  *

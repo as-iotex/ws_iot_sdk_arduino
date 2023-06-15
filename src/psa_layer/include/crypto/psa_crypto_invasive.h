@@ -4,7 +4,7 @@
 #include "common.h"
 #include "iotex/build_info.h"
 #include "iotex/entropy.h"
-#include "server/crypto.h"
+#include "svc/crypto.h"
 
 
 #if !defined(IOTEX_PSA_CRYPTO_EXTERNAL_RNG)

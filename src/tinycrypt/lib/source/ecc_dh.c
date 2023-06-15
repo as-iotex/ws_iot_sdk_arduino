@@ -54,10 +54,10 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-#include "tinycryt/constants.h"
-#include "tinycryt/ecc.h"
-#include "tinycryt/ecc_dh.h"
-#include "tinycryt/utils.h"
+#include "tinycrypt/constants.h"
+#include "tinycrypt/ecc.h"
+#include "tinycrypt/ecc_dh.h"
+#include "tinycrypt/utils.h"
 #include <string.h>
 
 int uECC_make_key_with_d(uint8_t *public_key, uint8_t *private_key,

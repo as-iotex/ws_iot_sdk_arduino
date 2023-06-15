@@ -1,9 +1,9 @@
 #ifndef PSA_CRYPTO_SLOT_MANAGEMENT_H
 #define PSA_CRYPTO_SLOT_MANAGEMENT_H
 
-#include "server/crypto.h"
-#include "server/crypto/psa_crypto_core.h"
-#include "server/crypto/psa_crypto_se.h"
+#include "svc/crypto.h"
+#include "svc/crypto/psa_crypto_core.h"
+#include "svc/crypto/psa_crypto_se.h"
 
 /** Range of volatile key identifiers.
  *

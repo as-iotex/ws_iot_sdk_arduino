@@ -7,7 +7,7 @@
 
 #include <string.h>
 #include "iotex/entropy.h" // only for error codes
-#include "server/crypto.h"
+#include "svc/crypto.h"
 
 typedef iotex_psa_external_random_context_t iotex_psa_random_context_t;
 

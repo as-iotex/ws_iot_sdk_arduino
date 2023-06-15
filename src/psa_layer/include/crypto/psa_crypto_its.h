@@ -4,8 +4,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "server/crypto_types.h"
-#include "server/crypto_values.h"
+#include "svc/crypto_types.h"
+#include "svc/crypto_values.h"
 
 #ifdef __cplusplus
 extern "C" {

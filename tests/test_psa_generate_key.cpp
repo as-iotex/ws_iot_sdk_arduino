@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "WSIoTSDK.h"
+#include "wsiotsdk.h"
 #include "test_helpers.h"
 
 class PsaGenerateKey : public ::testing::Test {

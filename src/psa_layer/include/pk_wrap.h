@@ -6,7 +6,7 @@
 #include "iotex/pk.h"
 
 #if defined(IOTEX_PSA_CRYPTO_C)
-#include "server/crypto.h"
+#include "svc/crypto.h"
 #endif /* IOTEX_PSA_CRYPTO_C */
 
 struct iotex_pk_info_t

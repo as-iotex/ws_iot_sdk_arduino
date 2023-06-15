@@ -4,7 +4,7 @@
 #include "common.h"
 
 #include "iotex/platform.h"
-#include "server/crypto/psa_crypto_cipher.h"
+#include "svc/crypto/psa_crypto_cipher.h"
 
 psa_status_t iotex_crypto_acceleration_cipher_setup( iotex_psa_cipher_operation_t *operation, const psa_key_attributes_t *attributes, const uint8_t *key_buffer, size_t key_buffer_size, psa_algorithm_t alg, uint8_t cipher_operation );
 psa_status_t iotex_crypto_acceleration_cipher_set_iv( iotex_psa_cipher_operation_t *operation, const uint8_t *iv, size_t iv_length );

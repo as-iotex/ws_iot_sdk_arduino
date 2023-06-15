@@ -20,12 +20,12 @@
 
 #if defined(IOTEX_PSA_CRYPTO_C)
 
-#include "server/crypto.h"
+#include "svc/crypto.h"
 
-#include "server/crypto/psa_crypto_core.h"
-#include "server/crypto/psa_crypto_driver_wrappers.h"
-#include "server/crypto/psa_crypto_slot_management.h"
-#include "server/crypto/psa_crypto_storage.h"
+#include "svc/crypto/psa_crypto_core.h"
+#include "svc/crypto/psa_crypto_driver_wrappers.h"
+#include "svc/crypto/psa_crypto_slot_management.h"
+#include "svc/crypto/psa_crypto_storage.h"
 #if defined(IOTEX_PSA_CRYPTO_SE_C)
 #include "psa_crypto_se.h"
 #endif

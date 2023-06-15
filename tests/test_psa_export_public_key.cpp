@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "WSIoTSDK.h"
+#include "wsiotsdk.h"
 #include "test_helpers.h"
 
 class PsaExportPublicKey : public ::testing::Test {
@@ -78,22 +78,22 @@ TEST_F(PsaExportPublicKey, EccKey) {
     psa_status_t status = psa_export_public_key(source_key, buffer, sizeof(buffer), &buffer_size);
     EXPECT_EQ(status, PSA_SUCCESS);
     EXPECT_EQ(buffer_size, sizeof(public_key));
-    // printf("Exported private key: ");
-    // for (size_t i = 0; i < sizeof(private_key); i++) {
-    //     printf("%02x", private_key[i]);
-    // }
-    // printf("\n");
-    // // Print buffer as a hex string
-    // printf("Exported public key: ");
-    // for (size_t i = 0; i < buffer_size; i++) {
-    //     printf("%02x", buffer[i]);
-    // }
-    // printf("\n");
-    // // Print public_key as a hex string
-    // printf("Expected public key: ");
-    // for (size_t i = 0; i < sizeof(public_key); i++) {
-    //     printf("%02x", public_key[i]);
-    // }
-    // printf("\n");
+    printf("Exported private key: ");
+    for (size_t i = 0; i < sizeof(private_key); i++) {
+        printf("%02x", private_key[i]);
+    }
+    printf("\n");
+    // Print buffer as a hex string
+    printf("Exported public key: ");
+    for (size_t i = 0; i < buffer_size; i++) {
+        printf("%02x", buffer[i]);
+    }
+    printf("\n");
+    // Print public_key as a hex string
+    printf("Expected public key: ");
+    for (size_t i = 0; i < sizeof(public_key); i++) {
+        printf("%02x", public_key[i]);
+    }
+    printf("\n");
     EXPECT_EQ(memcmp(buffer, public_key, sizeof(public_key)), 0);
 }

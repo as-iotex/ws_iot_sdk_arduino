@@ -1,9 +1,9 @@
 #ifndef PSA_CRYPTO_HASH_H
 #define PSA_CRYPTO_HASH_H
 
-#include "server/crypto.h"
+#include "svc/crypto.h"
 
-#include "../md_wrap.h"
+#include "md_wrap.h"
 
 /** Get Mbed TLS MD information of a hash algorithm given its PSA identifier
  *

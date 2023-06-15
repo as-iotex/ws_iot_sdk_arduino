@@ -2,7 +2,7 @@
 #define PSA_CRYPTO_CIPHER_H
 
 #include "iotex/cipher.h"
-#include "server/crypto.h"
+#include "svc/crypto.h"
 
 /** Get Mbed TLS cipher information given the cipher algorithm PSA identifier
  *  as well as the PSA type and size of the key to be used with the cipher

@@ -4,6 +4,7 @@
 #include "build_info.h"
 
 #include "bignum.h"
+#include "psa/crypto_types.h"
 
 /*
  * ECP error codes

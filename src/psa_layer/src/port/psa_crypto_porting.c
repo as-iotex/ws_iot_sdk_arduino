@@ -8,13 +8,13 @@
 #include "check_crypto_config.h"
 #endif
 
-#include "server/crypto.h"
-#include "server/crypto_values.h"
+#include "svc/crypto.h"
+#include "svc/crypto_values.h"
 
-#include "server/crypto/psa_crypto_all.h"
+#include "svc/crypto/psa_crypto_all.h"
 #include "iotex/iotex_crypto_all.h"
 
-#include "server/crypto/psa_crypto_random_impl.h"
+#include "svc/crypto/psa_crypto_random_impl.h"
 
 #include <assert.h>
 #include <stdlib.h>
@@ -25,7 +25,7 @@
 #define iotex_free   free
 #endif
 
-#include "server/cipher_wrap.h"
+#include "cipher_wrap.h"
 
 #if ((IOTEX_PSA_CRYPTO_MODULE_USE) == (CRYPTO_USE_IOTEX))
 #include "iotex/aes.h"
@@ -58,15 +58,15 @@
 #include "iotex/sha512.h"
 #elif ((IOTEX_PSA_CRYPTO_MODULE_USE) == (CRYPTO_USE_TINYCRYPO))
 
-#include "tinycryt/constants.h"
-#include "tinycryt/sha256.h"
-#include "tinycryt/ecc.h"
-#include "tinycryt/ecc_dh.h"
-#include "tinycryt/ecc_dsa.h"
-#include "tinycryt/ecc_platform_specific.h"
-#include "tinycryt/aes.h"
-#include "tinycryt/hmac_prng.h"
-#include "tinycryt/ctr_mode.h"
+#include "tinycrypt/constants.h"
+#include "tinycrypt/sha256.h"
+#include "tinycrypt/ecc.h"
+#include "tinycrypt/ecc_dh.h"
+#include "tinycrypt/ecc_dsa.h"
+#include "tinycrypt/ecc_platform_specific.h"
+#include "tinycrypt/aes.h"
+#include "tinycrypt/hmac_prng.h"
+#include "tinycrypt/ctr_mode.h"
 
 #endif
 
@@ -487,7 +487,11 @@ inline void iotex_sha256_clone( iotex_sha256_context *dst, const iotex_sha256_co
 	if (NULL == dst->sha256_ctx)
 		iotex_sha256_init(dst);
 
-    memcpy(dst, src, sizeof(struct tc_sha256_state_struct));
+    memcpy(dst, src, sizeof(iotex_sha256_context));
+    // Deep clone the sha256 context, which is dynamically allocated
+    // Otherwise, when aborting the source operation, the sha256 context of the destination will be freed
+    dst->sha256_ctx = malloc(sizeof(struct tc_sha256_state_struct));
+    memcpy(dst->sha256_ctx, src->sha256_ctx, sizeof(struct tc_sha256_state_struct));
 #endif
 
 #if ((IOTEX_PSA_CRYPTO_MODULE_USE) == (CRYPTO_USE_MBEDTLS))

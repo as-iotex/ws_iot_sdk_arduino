@@ -1155,7 +1155,7 @@
  * \warning This interface is experimental and may change or be removed
  * without notice.
  */
-//#define IOTEX_PSA_CRYPTO_CLIENT
+#define IOTEX_PSA_CRYPTO_CLIENT
 
 /** \def IOTEX_PSA_CRYPTO_DRIVERS
  *

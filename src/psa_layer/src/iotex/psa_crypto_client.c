@@ -16,7 +16,8 @@
  */
 #include "common.h"
 
-#include "psa/crypto.h"
+#include "svc/crypto.h"
+#include "iotex/build_info.h"
 
 #if defined(IOTEX_PSA_CRYPTO_CLIENT)
 

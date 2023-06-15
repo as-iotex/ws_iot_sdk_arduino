@@ -4,7 +4,7 @@
 #include "common.h"
 
 #include "iotex/platform.h"
-#include "server/crypto/psa_crypto_rsa.h"
+#include "svc/crypto/psa_crypto_rsa.h"
 
 psa_status_t iotex_crypto_acceleration_asymmetric_encrypt( const psa_key_attributes_t *attributes,
                                              const uint8_t *key_buffer,

@@ -5,7 +5,7 @@
 
 #if defined(IOTEX_PSA_CRYPTO_C)
 
-#include "server/crypto.h"
+#include "svc/crypto.h"
 
 #include "iotex/ecp.h"
 #include "iotex/md.h"

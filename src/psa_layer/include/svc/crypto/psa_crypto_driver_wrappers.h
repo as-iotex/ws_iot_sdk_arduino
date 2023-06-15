@@ -1,8 +1,8 @@
 #ifndef PSA_CRYPTO_DRIVER_WRAPPERS_H
 #define PSA_CRYPTO_DRIVER_WRAPPERS_H
 
-#include "server/crypto.h"
-#include "server/crypto_driver_common.h"
+#include "svc/crypto.h"
+#include "svc/crypto_driver_common.h"
 
 /*
  * Initialization and termination functions

@@ -3,8 +3,8 @@
 
 #include "iotex/build_info.h"
 
-#include "server/crypto.h"
-#include "server/crypto_se_driver.h"
+#include "svc/crypto.h"
+#include "svc/crypto_se_driver.h"
 
 /** The maximum location value that this implementation supports
  * for a secure element.

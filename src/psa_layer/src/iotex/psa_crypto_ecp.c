@@ -20,11 +20,11 @@
 
 #if defined(IOTEX_PSA_CRYPTO_C)
 
-#include "server/crypto.h"
-#include "server/crypto/psa_crypto_core.h"
-#include "server/crypto/psa_crypto_ecp.h"
-#include "server/crypto/psa_crypto_random_impl.h"
-#include "server/crypto/psa_crypto_hash.h"
+#include "svc/crypto.h"
+#include "svc/crypto/psa_crypto_core.h"
+#include "svc/crypto/psa_crypto_ecp.h"
+#include "svc/crypto/psa_crypto_random_impl.h"
+#include "svc/crypto/psa_crypto_hash.h"
 
 #include <stdlib.h>
 #include <string.h>

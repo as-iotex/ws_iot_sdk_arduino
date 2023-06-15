@@ -53,9 +53,9 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "tinycryt/constants.h"
-#include "tinycryt/ecc.h"
-#include "tinycryt/ecc_dsa.h"
+#include "tinycrypt/constants.h"
+#include "tinycrypt/ecc.h"
+#include "tinycrypt/ecc_dsa.h"
 
 
 static void bits2int(uECC_word_t *native, const uint8_t *bits,

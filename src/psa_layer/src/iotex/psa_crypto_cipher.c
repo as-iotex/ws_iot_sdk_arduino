@@ -18,9 +18,9 @@
 
 #if defined(IOTEX_PSA_CRYPTO_C)
 
-#include "server/crypto/psa_crypto_cipher.h"
-#include "server/crypto/psa_crypto_core.h"
-#include "server/crypto/psa_crypto_random_impl.h"
+#include "svc/crypto/psa_crypto_cipher.h"
+#include "svc/crypto/psa_crypto_core.h"
+#include "svc/crypto/psa_crypto_random_impl.h"
 
 #include "iotex/cipher.h"
 #include "iotex/error.h"

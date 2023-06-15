@@ -30,9 +30,9 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "tinycryt/aes.h"
-#include "tinycryt/constants.h"
-#include "tinycryt/utils.h"
+#include "tinycrypt/aes.h"
+#include "tinycrypt/constants.h"
+#include "tinycrypt/utils.h"
 
 
 static const uint8_t inv_sbox[256] = {

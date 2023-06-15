@@ -5,8 +5,8 @@
 extern "C" {
 #endif
 
-#include "server/crypto.h"
-#include "server/crypto_se_driver.h"
+#include "svc/crypto.h"
+#include "svc/crypto_se_driver.h"
 
 #include <stdint.h>
 #include <string.h>

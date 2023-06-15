@@ -1,7 +1,7 @@
 #ifndef PSA_CRYPTO_HASH_H
 #define PSA_CRYPTO_HASH_H
 
-#include "server/crypto.h"
+#include "svc/crypto.h"
 
 #include "../md_wrap.h"
 

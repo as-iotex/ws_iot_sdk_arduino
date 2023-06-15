@@ -18,6 +18,7 @@ project(
 add_library(ws_iot_sdk STATIC)
 target_include_directories(ws_iot_sdk 
     PUBLIC src
+    PUBLIC src/psa_layer/include
     PRIVATE src/tinycrypt/lib/include
 )
 file(GLOB_RECURSE sources CONFIGURE_DEPENDS src/*.c src/*.h)
@@ -34,9 +35,9 @@ target_sources(ws_iot_sdk
     src/psa_layer/src/iotex/psa_crypto_rsa.c
     src/psa_layer/src/iotex/psa_crypto_mac.c
     src/psa_layer/src/iotex/psa_crypto_slot_management.c
+    src/psa_layer/src/iotex/cipher_wrap.c
+    src/psa_layer/src/iotex/psa_crypto.c
     src/psa_layer/src/port/psa_crypto_porting.c
-    src/psa_layer/cipher_wrap.c
-    src/psa_layer/psa_crypto.c
     src/psa_layer/entropy.c
     src/tinycrypt/lib/source/aes_decrypt.c
     src/tinycrypt/lib/source/aes_encrypt.c
