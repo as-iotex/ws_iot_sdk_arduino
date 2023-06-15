@@ -1,4 +1,4 @@
-#include "WSIoTSDK.h"
+#include "wsiotsdk.h"
 
 void setup()
 {
