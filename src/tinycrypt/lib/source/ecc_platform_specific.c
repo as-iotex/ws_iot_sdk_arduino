@@ -103,8 +103,9 @@ int default_CSPRNG(uint8_t *dest, unsigned int size) {
 
 #else
 
-#include <stdlib.h>
-#include <stdint.h>
+#if defined(ARDUINO)
+
+#include "Arduino.h"
 
 void default_SetSeed(unsigned int seed)
 {
@@ -130,6 +131,8 @@ int default_CSPRNG(uint8_t *dest, unsigned int size) {
   return 1;
 
 }
+
+#endif /* #if defined(ARDUINO) */
 
 #endif /* platform */
 
