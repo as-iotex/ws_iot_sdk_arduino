@@ -201,7 +201,7 @@ static int aes_setkey_enc_wrap( void *ctx, const unsigned char *key,
 
 static void * aes_ctx_alloc( void )
 {
-    iotex_aes_context *aes = iotex_calloc( 1, sizeof( iotex_aes_context ) );
+    iotex_aes_context *aes = (iotex_aes_context*) (iotex_calloc( 1, sizeof( iotex_aes_context ) ));
 
     if( aes == NULL )
         return( NULL );
