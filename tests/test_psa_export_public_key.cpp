@@ -78,7 +78,7 @@ TEST_F(PsaExportPublicKey, EccKey) {
     psa_status_t status = psa_export_public_key(source_key, buffer, sizeof(buffer), &buffer_size);
     EXPECT_EQ(status, PSA_SUCCESS);
     EXPECT_EQ(buffer_size, sizeof(public_key));
-    printf("Exported private key: ");
+    printf("Imported private key: ");
     for (size_t i = 0; i < sizeof(private_key); i++) {
         printf("%02x", private_key[i]);
     }
