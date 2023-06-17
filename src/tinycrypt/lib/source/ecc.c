@@ -510,21 +510,6 @@ void double_jacobian_default(uECC_word_t * X1, uECC_word_t * Y1,
 			return;
 	}
 
-#if 0
-	if( curve == &curve_secp256r1 )	{
-		uECC_vli_modAdd(X1, X1, Z1, curve->p, num_words); /* t1 = x1 + z1^2 */
-		uECC_vli_modAdd(Z1, Z1, Z1, curve->p, num_words); /* t3 = 2*z1^2 */
-		uECC_vli_modSub(Z1, X1, Z1, curve->p, num_words); /* t3 = x1 - z1^2 */
-		uECC_vli_modMult_fast(X1, X1, Z1, curve); /* t1 = x1^2 - z1^4 */
-		uECC_vli_modAdd(Z1, X1, X1, curve->p, num_words); /* t3 = 2*(x1^2 - z1^4) */
-		uECC_vli_modAdd(X1, X1, Z1, curve->p, num_words); /* t1 = 3*(x1^2 - z1^4) */
-	} else {
-		uECC_vli_modSquare_fast(X1, X1, curve);
-		uECC_vli_modAdd(Z1, X1, X1, curve->p, num_words);
-		uECC_vli_modAdd(X1, X1, Z1, curve->p, num_words);
-	}
-#endif
-
 	if (uECC_vli_testBit(X1, 0)) {
 		uECC_word_t l_carry = uECC_vli_add(X1, X1, curve->p, num_words);
 		uECC_vli_rshift1(X1, num_words);

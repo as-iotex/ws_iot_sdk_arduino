@@ -34,47 +34,6 @@
 #include "tinycrypt/constants.h"
 #include "tinycrypt/utils.h"
 
-#if 0
-int tc_cbc_mode_encrypt(uint8_t *out, unsigned int outlen, const uint8_t *in,
-			    unsigned int inlen, const uint8_t *iv,
-			    const TCAesKeySched_t sched)
-{
-
-	uint8_t buffer[TC_AES_BLOCK_SIZE];
-	unsigned int n, m;
-
-	/* input sanity check: */
-	if (out == (uint8_t *) 0 ||
-	    in == (const uint8_t *) 0 ||
-	    sched == (TCAesKeySched_t) 0 ||
-	    inlen == 0 ||
-	    outlen == 0 ||
-	    (inlen % TC_AES_BLOCK_SIZE) != 0 ||
-	    (outlen % TC_AES_BLOCK_SIZE) != 0 ||
-	    outlen != inlen + TC_AES_BLOCK_SIZE) {
-		return TC_CRYPTO_FAIL;
-	}
-
-	/* copy iv to the buffer */
-	(void)_copy(buffer, TC_AES_BLOCK_SIZE, iv, TC_AES_BLOCK_SIZE);
-	/* copy iv to the output buffer */
-	(void)_copy(out, TC_AES_BLOCK_SIZE, iv, TC_AES_BLOCK_SIZE);
-	out += TC_AES_BLOCK_SIZE;
-
-	for (n = m = 0; n < inlen; ++n) {
-		buffer[m++] ^= *in++;
-		if (m == TC_AES_BLOCK_SIZE) {
-			(void)tc_aes_encrypt(buffer, buffer, sched);
-			(void)_copy(out, TC_AES_BLOCK_SIZE,
-				    buffer, TC_AES_BLOCK_SIZE);
-			out += TC_AES_BLOCK_SIZE;
-			m = 0;
-		}
-	}
-
-	return TC_CRYPTO_SUCCESS;
-}
-#else
 int tc_cbc_mode_encrypt(uint8_t *out, unsigned int outlen, const uint8_t *in,
 			    unsigned int inlen, const uint8_t *iv,
 			    const TCAesKeySched_t sched)

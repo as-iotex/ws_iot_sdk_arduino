@@ -156,17 +156,7 @@ static inline int iotex_psa_drbg_seed(
                                    entropy,
                                    custom, len ) );
 #elif defined(IOTEX_HMAC_DRBG_C)
-#if 0
-    const iotex_md_info_t *md_info =
-        iotex_md_info_from_type( IOTEX_PSA_HMAC_DRBG_MD_TYPE );        
-    return( iotex_hmac_drbg_seed( IOTEX_PSA_RANDOM_STATE,
-                                    md_info,
-                                    iotex_entropy_func,
-                                    entropy,
-                                    custom, len ) );
-#else
     return( iotex_hmac_drbg_seed( IOTEX_PSA_RANDOM_STATE, 0, 0, 0, custom, len ) );
-#endif                                    
 #endif
 }
 

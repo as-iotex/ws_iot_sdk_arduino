@@ -6086,13 +6086,7 @@ void iotex_psa_crypto_free( void )
     {
         iotex_psa_random_free( &global_data.rng );
     }
-
-#if 0
-    iotex_platform_zeroize( &global_data, sizeof( global_data ) );
-#else
     memset( &global_data, 0, sizeof( global_data ) );
-#endif
-
     psa_driver_wrapper_free( );
 }
 

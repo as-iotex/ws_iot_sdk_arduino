@@ -1893,21 +1893,6 @@ inline int iotex_ecp_point_write_binary( const iotex_ecp_group *grp,
 
     *olen = buflen;
 
-#if 0
-    unsigned char *p = NULL;
-    if( buflen >= (2 * NUM_ECC_BYTES + 1) )
-    {
-        buf[0] = 0x04;
-        p = buf + 1;
-    }
-    else if( buflen == (2 * NUM_ECC_BYTES) )
-    {
-        p = buf;
-    }
-    else
-        return PSA_ERROR_INVALID_ARGUMENT;
-#endif
-
     return PSA_SUCCESS;    
 }
 
@@ -1981,14 +1966,6 @@ inline int iotex_ecdsa_sign( psa_key_type_t type,
 
     uECC_set_rng(&default_CSPRNG);
 
-#if 0
-    if( type == PSA_ECC_FAMILY_SECP_R1 )
-        curve = uECC_secp256r1();
-    else if( type == PSA_ECC_FAMILY_SECP_K1 )
-        curve = uECC_secp256r1();
-    else
-        return 1;
-#else
     switch( type )
     {
         case PSA_ECC_FAMILY_SECP_R1:
@@ -2004,7 +1981,6 @@ inline int iotex_ecdsa_sign( psa_key_type_t type,
         default:
             return 1;
     }
-#endif
 
     ret = uECC_sign(key_buffer, hash, hash_length, signature, curve);
     if ( ret )
@@ -2023,12 +1999,6 @@ inline int iotex_ecdsa_verify( psa_key_type_t type,
     uint8_t public_key[2 * NUM_ECC_BYTES] = {0};
     int ret;
 
-#if 0
-    if( type == PSA_ECC_FAMILY_SECP_R1)
-        curve = uECC_secp256r1();
-    else
-        return PSA_ERROR_GENERIC_ERROR;
-#else
     switch( type )
     {
         case PSA_ECC_FAMILY_SECP_R1:
@@ -2044,7 +2014,6 @@ inline int iotex_ecdsa_verify( psa_key_type_t type,
         default:
             return PSA_ERROR_GENERIC_ERROR;
     }
-#endif
 
     uECC_compute_public_key(key_buffer, public_key, curve);
 
@@ -2196,15 +2165,6 @@ int iotex_hmac_drbg_seed( iotex_hmac_drbg_context *ctx,
                     const unsigned char *custom,
                     size_t len )
 {
-#if 0
-    (void *)ctx;
-    (void *)md_info;
-    (void *)f_entropy;
-    (void *)p_entropy;
-    (void *)custom;
-    (void)len;
-#endif
-
     int ret = tc_hmac_prng_reseed(&iotex_hmac_prng_ctx.h, default_entroy_reseed, 32, 0, 0);
     if (TC_CRYPTO_SUCCESS != ret)
         return PSA_ERROR_INVALID_ARGUMENT;
