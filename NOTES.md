@@ -3,3 +3,5 @@
 - KEYWORDS.txt
 - library.json
 - README
+- Remove comments in chinese in iotex_dev_access
+- Fix Export publick key test
