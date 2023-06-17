@@ -1,3 +1,5 @@
 - Adapted file structure to match my repo
-- TODO: Fix include paths in CMakeLists and files
-- TODO: Remove w3bstream related code from the SDK and into examples
+- TODO: Remove w3bstream related code from the SDK and into examples 
+- KEYWORDS.txt
+- library.json
+- README

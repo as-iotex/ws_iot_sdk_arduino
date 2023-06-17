@@ -2,6 +2,22 @@
 
 
 
+## Developing in VSCode
+
+Open the folder in VSCode. You whould see a pop up on the bottom left asking to install the recommended extensions. Install them.  
+
+### Building with VSCode CMake extension
+
+1. Open the Command Palette in VSCode by pressing Ctrl+Shift+P.  
+2. Search for "CMake: Build" and select the "CMake: Build" command.  
+
+### Running/debugging the tests
+
+1. Ensure you have selected the Debug CMake variant when building the project. Use Ctrl+Shift+P and "CMake: Select variant" to do so.  
+2. Build the project using CMake.  
+3. On the left side panel, click on the Testing extension icon. It should open a list of tests.  
+4. Beside each of the tests, you can see an icon to run the test or debug it.  
+
 ## Configure Your Project
 
 ### Dependency:
