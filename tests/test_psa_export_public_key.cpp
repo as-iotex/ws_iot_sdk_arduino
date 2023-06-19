@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <string>
 #include "wsiotsdk.h"
 #include "test_helpers.h"
 
@@ -6,26 +7,46 @@ class PsaExportPublicKey : public ::testing::Test {
     protected:
         void SetUp() override 
         {
+            // Convert private_key_str and public_key_str to upper case
+            std::transform(private_key_str.begin(), private_key_str.end(), private_key_str.begin(), ::toupper);
+            std::transform(public_key_str.begin(), public_key_str.end(), public_key_str.begin(), ::toupper);
+            
+            // Convert private_key_str and public_key_str to byte arrays
+            hex_string_to_byte_array(private_key_str, private_key, sizeof(private_key));
+            hex_string_to_byte_array(public_key_str, public_key, sizeof(public_key));
         }
+
         void TearDown() override
         {
             reset_global_data();
             crypto_slot_management_reset_global_data();
         }
         
-        uint8_t private_key[32] = {0xb8, 0x88, 0xa3, 0x71, 0xb8, 0x25, 0xa0, 0x05, 0x1b, 0x2a, 0xd1, 0x6f, 0x03, 0xc4, 0xfd, 0x7b, 0xcf, 0x86, 0x58, 0x92, 0x73, 0x06, 0x11, 0xe9, 0xae, 0x79, 0x4a, 0x16, 0xba, 0xa2, 0xaf, 0xe5};
-        uint8_t public_key[65] = {0x04, 0x77, 0x9b, 0x4b, 0x4a, 0xc8, 0x75, 0xd4, 0xed, 0xd7, 0x3e, 0xc5, 0xf8, 0x7a, 0xb9, 0x09, 0x43, 0xc7, 0x14, 0x47, 0x2f, 0x8d, 0x9b, 0xad, 0xfa, 0x29, 0x6b, 0xd3, 0x0c, 0x97, 0x4d, 0x3c, 0xc2, 0x60, 0xc0, 0x51, 0xd7, 0x33, 0x88, 0x24, 0xdb, 0x9c, 0xf2, 0x75, 0xa3, 0x54, 0x00, 0xbc, 0xac, 0x1d, 0xa2, 0x11, 0xd4, 0xc8, 0x79, 0xa9, 0x31, 0xe0, 0x82, 0xa3, 0x85, 0xbc, 0x21, 0xb1, 0x0c};
+        std::string private_key_str = "7B9E3432DEE7B1CEB719496D30B86A76CC34B6815919328099468DD9A99DC01C";
+        std::string public_key_str = "04d3e3555d86d404fa937c1dff8ce3f1777dc11a0e7ff972cab0ef8f7efc62267949d639fceebfcb1c3495f50c5694d716b7d6443e2a50baf46ac5fee6b6652206";
+        uint8_t private_key[32] = {};
+        uint8_t public_key[65] = {};
 
         void ImportEccKey(psa_key_id_t *source_key, psa_key_attributes_t *attr, bool allowExport = true)
         {
             psa_crypto_init();
             psa_set_key_algorithm(attr, PSA_ALG_ECDSA_ANY);
-            psa_set_key_type(attr, PSA_KEY_TYPE_ECC_KEY_PAIR(PSA_ECC_FAMILY_SECP_R1));
+            psa_set_key_type(attr, PSA_KEY_TYPE_ECC_KEY_PAIR(PSA_ECC_FAMILY_SECP_K1));
             psa_set_key_bits(attr, 256);
             psa_set_key_lifetime(attr, PSA_KEY_LIFETIME_VOLATILE);
             if(allowExport) { psa_set_key_usage_flags(attr, PSA_KEY_USAGE_EXPORT); }
             psa_status_t status = psa_import_key(attr, private_key, sizeof(private_key), source_key);
             ASSERT_EQ(status, PSA_SUCCESS);
+        }
+
+        void hex_string_to_byte_array(std::string& in, uint8_t* out,  size_t size)
+        {
+            std::string hex = in;
+            hex.erase(std::remove(hex.begin(), hex.end(), ' '), hex.end());
+            for (size_t i = 0; i < size; ++i) {
+                std::string byteString = hex.substr(i * 2, 2);
+                out[i] = (uint8_t) strtol(byteString.c_str(), NULL, 16);
+            }
         }
 };
 
@@ -78,22 +99,5 @@ TEST_F(PsaExportPublicKey, EccKey) {
     psa_status_t status = psa_export_public_key(source_key, buffer, sizeof(buffer), &buffer_size);
     EXPECT_EQ(status, PSA_SUCCESS);
     EXPECT_EQ(buffer_size, sizeof(public_key));
-    printf("Imported private key: ");
-    for (size_t i = 0; i < sizeof(private_key); i++) {
-        printf("%02x", private_key[i]);
-    }
-    printf("\n");
-    // Print buffer as a hex string
-    printf("Exported public key: ");
-    for (size_t i = 0; i < buffer_size; i++) {
-        printf("%02x", buffer[i]);
-    }
-    printf("\n");
-    // Print public_key as a hex string
-    printf("Expected public key: ");
-    for (size_t i = 0; i < sizeof(public_key); i++) {
-        printf("%02x", public_key[i]);
-    }
-    printf("\n");
     EXPECT_EQ(memcmp(buffer, public_key, sizeof(public_key)), 0);
 }
