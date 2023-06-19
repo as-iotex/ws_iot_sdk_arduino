@@ -77,7 +77,6 @@ int tc_cbc_mode_encrypt(uint8_t *out, unsigned int outlen, const uint8_t *in,
 
 	return TC_CRYPTO_SUCCESS;
 }
-#endif
 
 int tc_cbc_mode_decrypt(uint8_t *out, unsigned int outlen, const uint8_t *in,
 			    unsigned int inlen, const uint8_t *iv,
