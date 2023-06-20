@@ -1,47 +1,105 @@
-idf_component_register(SRCS "wsiotsdk.c"
-							"crypto/aes_decrypt.c"
-							"crypto/aes_encrypt.c"
-							"crypto/cbc_mode.c"
-							"crypto/ccm_mode.c"
-							"crypto/cmac_mode.c"
-							"crypto/ctr_mode.c"
-							"crypto/ctr_prng.c"
-							"crypto/ecc_dh.c"
-							"crypto/ecc_dsa.c"
-							"crypto/ecc_platform_specific.c"
-							"crypto/ecc.c"
-							"crypto/hmac_prng.c"
-							"crypto/hmac.c"
-							"crypto/sha256.c"
-							"crypto/utils.c"
-							"psa_layer/cipher_wrap.c"
-							"psa_layer/psa_crypto_cipher.c"
-							"psa_layer/psa_crypto_client.c"
-							"psa_layer/psa_crypto_driver_wrappers.c"
-							"psa_layer/psa_crypto_ecp.c"
-							"psa_layer/psa_crypto_hash.c"
-							"psa_layer/psa_crypto_rsa.c"
-							"psa_layer/psa_crypto_porting.c"
-							"psa_layer/psa_crypto_slot_management.c"
-							"psa_layer/psa_crypto.c"
-#							"psa_layer/acc/acc_driver_hash.c"
-#							"psa_layer/acc/acc_driver_cipher.c"
-#							"psa_layer/acc/acc_driver_rsa.c"
-							"application/devnet/iotex_dev_access.c"
-							"application/devnet/cJSON/cJSON.c"
-							"application/devnet/keccak256/keccak256.c"
-							"application/devnet/ProtoBuf/package.pb.c"
-							"application/devnet/ProtoBuf/event.pb.c"
-							"application/devnet/ProtoBuf/devnet_upload.pb.c"
-							"application/devnet/ProtoBuf/header.pb.c"
-							"application/devnet/ProtoBuf/payload.pb.c"
-							"application/devnet/ProtoBuf/user_data.pb.c"
-							"application/devnet/ProtoBuf/pb_common.c"
-							"application/devnet/ProtoBuf/pb_decode.c"
-							"application/devnet/ProtoBuf/pb_encode.c"
-							"application/devnet/base64/base64.c"
-                    INCLUDE_DIRS "include" "include/application/devnet" "include/backends"
-                    REQUIRES mbedtls)
-                    
-target_compile_options(${COMPONENT_LIB} PRIVATE "-Wno-format")                    
+# CMake 3.10: Ubuntu 20.04.
+# https://cliutils.gitlab.io/modern-cmake/chapters/intro/dodonot.html
+cmake_minimum_required(VERSION 3.16)
 
+# If you set any CMAKE_ variables, that can go here.
+# (But usually don't do this, except maybe for C++ standard)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+project(
+  WSIoTSDK
+  VERSION 1.0
+  LANGUAGES C CXX
+)
+
+# Add a static library ws_iot_sdk
+add_library(ws_iot_sdk STATIC)
+target_include_directories(ws_iot_sdk 
+    PUBLIC src
+    PUBLIC src/psa_layer/include
+    PRIVATE src/tinycrypt/lib/include
+)
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS src/*.c src/*.h)
+
+target_sources(ws_iot_sdk 
+  PRIVATE
+    src/psa_layer/src/iotex/psa_crypto_cipher.c
+    src/psa_layer/src/iotex/psa_crypto_client.c
+    src/psa_layer/src/iotex/psa_crypto_driver_wrappers.c
+    src/psa_layer/src/iotex/psa_crypto_ecp.c
+    src/psa_layer/src/iotex/psa_crypto_ecdh.c
+    src/psa_layer/src/iotex/psa_crypto_hash.c
+    src/psa_layer/src/iotex/psa_crypto_aead.c
+    src/psa_layer/src/iotex/psa_crypto_rsa.c
+    src/psa_layer/src/iotex/psa_crypto_mac.c
+    src/psa_layer/src/iotex/psa_crypto_slot_management.c
+    src/psa_layer/src/iotex/cipher_wrap.c
+    src/psa_layer/src/iotex/psa_crypto.c
+    src/psa_layer/src/port/psa_crypto_porting.c
+    src/psa_layer/entropy.c
+    src/tinycrypt/lib/source/aes_decrypt.c
+    src/tinycrypt/lib/source/aes_encrypt.c
+    src/tinycrypt/lib/source/cbc_mode.c
+    src/tinycrypt/lib/source/ccm_mode.c
+    src/tinycrypt/lib/source/cmac_mode.c
+    src/tinycrypt/lib/source/ctr_mode.c
+    src/tinycrypt/lib/source/ctr_prng.c
+    src/tinycrypt/lib/source/ecc_dh.c
+    src/tinycrypt/lib/source/ecc_dsa.c
+    src/tinycrypt/lib/source/ecc_platform_specific.c
+    src/tinycrypt/lib/source/ecc.c
+    src/tinycrypt/lib/source/hmac_prng.c
+    src/tinycrypt/lib/source/hmac.c
+    src/tinycrypt/lib/source/sha256.c
+    src/tinycrypt/lib/source/utils.c
+)
+
+include(CTest)
+if (BUILD_TESTING)
+  target_compile_definitions(ws_iot_sdk PUBLIC -DUNIT_TEST_BUILD)
+  include(FetchContent) 
+  FetchContent_Declare(
+    googletest
+    # Specify the commit you depend on and update it regularly.
+    URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
+  )
+  # For Windows: Prevent overriding the parent project's compiler/linker settings
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+  FetchContent_MakeAvailable(googletest)
+
+    add_executable(unit_tests 
+      tests/test_psa_cipher_encrypt.cpp
+      tests/test_psa_cipher_decrypt.cpp
+      tests/test_psa_cipher_decrypt_setup.cpp
+      tests/test_psa_cipher_encrypt_setup.cpp
+      tests/test_psa_cipher_generate_iv.cpp
+      tests/test_psa_cipher_update.cpp
+      tests/test_psa_copy_key.cpp
+      tests/test_psa_crypto_init.cpp
+      tests/test_psa_destroy_key.cpp
+      tests/test_psa_export_key.cpp
+      tests/test_psa_export_public_key.cpp
+      tests/test_psa_generate_key.cpp
+      tests/test_psa_generate_random.cpp
+      tests/test_psa_hash_abort.cpp
+      tests/test_psa_hash_clone.cpp
+      tests/test_psa_hash_compare.cpp
+      tests/test_psa_hash_compute.cpp
+      tests/test_psa_hash_finish.cpp
+      tests/test_psa_hash_setup.cpp
+      tests/test_psa_hash_update.cpp
+      tests/test_psa_hash_verify.cpp
+      tests/test_psa_import_key.cpp
+    )
+
+    target_link_libraries(unit_tests
+      ws_iot_sdk
+      gtest_main)
+
+    add_test(NAME unit_tests COMMAND unit_tests)
+
+    list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
+
+endif()

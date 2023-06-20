@@ -1,0 +1,7 @@
+- Adapted file structure to match my repo
+- TODO: Remove w3bstream related code from the SDK and into examples 
+- KEYWORDS.txt
+- library.json
+- README
+- Remove comments in chinese in iotex_dev_access
+- Fix Export publick key test
