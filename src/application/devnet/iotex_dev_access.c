@@ -2,9 +2,9 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "iotex_dev_access.h"
+#include "include/application/devnet/iotex_dev_access.h"
 
-#include "psa/crypto.h"
+#include "include/psa/crypto.h"
 
 extern psa_key_id_t key_id;
 

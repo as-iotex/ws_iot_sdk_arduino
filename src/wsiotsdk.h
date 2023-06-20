@@ -1,8 +1,9 @@
 #ifndef __WSIOTSDK_H__
 #define __WSIOTSDK_H__
 
-#include "psa_layer/include/svc/crypto.h"
-#include "psa_layer/include/entropy.h"
+#include "include/svc/crypto.h"
+#include "include/entropy.h"
+#include "include/application/devnet/iotex_dev_access.h"
 
 namespace iotex
 {
