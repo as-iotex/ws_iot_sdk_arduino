@@ -18,8 +18,6 @@ project(
 add_library(ws_iot_sdk STATIC)
 target_include_directories(ws_iot_sdk 
     PUBLIC src
-    PUBLIC src/psa_layer/include
-    PRIVATE src/tinycrypt/lib/include
 )
 file(GLOB_RECURSE sources CONFIGURE_DEPENDS src/*.c src/*.h)
 
@@ -39,21 +37,21 @@ target_sources(ws_iot_sdk
     src/psa_layer/psa_crypto.c
     src/psa_layer/psa_crypto_porting.c
     src/psa_layer/entropy.c
-    src/tinycrypt/lib/source/aes_decrypt.c
-    src/tinycrypt/lib/source/aes_encrypt.c
-    src/tinycrypt/lib/source/cbc_mode.c
-    src/tinycrypt/lib/source/ccm_mode.c
-    src/tinycrypt/lib/source/cmac_mode.c
-    src/tinycrypt/lib/source/ctr_mode.c
-    src/tinycrypt/lib/source/ctr_prng.c
-    src/tinycrypt/lib/source/ecc_dh.c
-    src/tinycrypt/lib/source/ecc_dsa.c
-    src/tinycrypt/lib/source/ecc_platform_specific.c
-    src/tinycrypt/lib/source/ecc.c
-    src/tinycrypt/lib/source/hmac_prng.c
-    src/tinycrypt/lib/source/hmac.c
-    src/tinycrypt/lib/source/sha256.c
-    src/tinycrypt/lib/source/utils.c
+    src/tinycrypt/aes_decrypt.c
+    src/tinycrypt/aes_encrypt.c
+    src/tinycrypt/cbc_mode.c
+    src/tinycrypt/ccm_mode.c
+    src/tinycrypt/cmac_mode.c
+    src/tinycrypt/ctr_mode.c
+    src/tinycrypt/ctr_prng.c
+    src/tinycrypt/ecc_dh.c
+    src/tinycrypt/ecc_dsa.c
+    src/tinycrypt/ecc_platform_specific.c
+    src/tinycrypt/ecc.c
+    src/tinycrypt/hmac_prng.c
+    src/tinycrypt/hmac.c
+    src/tinycrypt/sha256.c
+    src/tinycrypt/utils.c
 )
 
 include(CTest)

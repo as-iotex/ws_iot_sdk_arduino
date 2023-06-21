@@ -58,15 +58,15 @@
 #include "include/iotex/sha512.h"
 #elif ((IOTEX_PSA_CRYPTO_MODULE_USE) == (CRYPTO_USE_TINYCRYPO))
 
-#include "tinycrypt/constants.h"
-#include "tinycrypt/sha256.h"
-#include "tinycrypt/ecc.h"
-#include "tinycrypt/ecc_dh.h"
-#include "tinycrypt/ecc_dsa.h"
-#include "tinycrypt/ecc_platform_specific.h"
-#include "tinycrypt/aes.h"
-#include "tinycrypt/hmac_prng.h"
-#include "tinycrypt/ctr_mode.h"
+#include "include/tinycrypt/constants.h"
+#include "include/tinycrypt/sha256.h"
+#include "include/tinycrypt/ecc.h"
+#include "include/tinycrypt/ecc_dh.h"
+#include "include/tinycrypt/ecc_dsa.h"
+#include "include/tinycrypt/ecc_platform_specific.h"
+#include "include/tinycrypt/aes.h"
+#include "include/tinycrypt/hmac_prng.h"
+#include "include/tinycrypt/ctr_mode.h"
 
 #endif
 

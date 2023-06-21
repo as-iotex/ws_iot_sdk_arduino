@@ -30,10 +30,10 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "tinycrypt/hmac_prng.h"
-#include "tinycrypt/hmac.h"
-#include "tinycrypt/constants.h"
-#include "tinycrypt/utils.h"
+#include "include/tinycrypt/hmac_prng.h"
+#include "include/tinycrypt/hmac.h"
+#include "include/tinycrypt/constants.h"
+#include "include/tinycrypt/utils.h"
 
 /*
  * min bytes in the seed string.

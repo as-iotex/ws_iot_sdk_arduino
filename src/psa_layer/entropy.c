@@ -1,5 +1,5 @@
 #include "include/entropy.h"
-#include "tinycrypt/lib/include/tinycrypt/ecc_platform_specific.h"
+#include "include/tinycrypt/ecc_platform_specific.h"
 
 void SetEntropy(uint8_t seed)
 {

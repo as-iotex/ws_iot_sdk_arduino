@@ -30,9 +30,9 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "tinycrypt/cbc_mode.h"
-#include "tinycrypt/constants.h"
-#include "tinycrypt/utils.h"
+#include "include/tinycrypt/cbc_mode.h"
+#include "include/tinycrypt/constants.h"
+#include "include/tinycrypt/utils.h"
 
 int tc_cbc_mode_encrypt(uint8_t *out, unsigned int outlen, const uint8_t *in,
 			    unsigned int inlen, const uint8_t *iv,
