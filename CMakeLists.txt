@@ -25,19 +25,19 @@ file(GLOB_RECURSE sources CONFIGURE_DEPENDS src/*.c src/*.h)
 
 target_sources(ws_iot_sdk 
   PRIVATE
-    src/psa_layer/src/iotex/psa_crypto_cipher.c
-    src/psa_layer/src/iotex/psa_crypto_client.c
-    src/psa_layer/src/iotex/psa_crypto_driver_wrappers.c
-    src/psa_layer/src/iotex/psa_crypto_ecp.c
-    src/psa_layer/src/iotex/psa_crypto_ecdh.c
-    src/psa_layer/src/iotex/psa_crypto_hash.c
-    src/psa_layer/src/iotex/psa_crypto_aead.c
-    src/psa_layer/src/iotex/psa_crypto_rsa.c
-    src/psa_layer/src/iotex/psa_crypto_mac.c
-    src/psa_layer/src/iotex/psa_crypto_slot_management.c
-    src/psa_layer/src/iotex/cipher_wrap.c
-    src/psa_layer/src/iotex/psa_crypto.c
-    src/psa_layer/src/port/psa_crypto_porting.c
+    src/psa_layer/psa_crypto_cipher.c
+    src/psa_layer/psa_crypto_client.c
+    src/psa_layer/psa_crypto_driver_wrappers.c
+    src/psa_layer/psa_crypto_ecp.c
+    src/psa_layer/psa_crypto_ecdh.c
+    src/psa_layer/psa_crypto_hash.c
+    src/psa_layer/psa_crypto_aead.c
+    src/psa_layer/psa_crypto_rsa.c
+    src/psa_layer/psa_crypto_mac.c
+    src/psa_layer/psa_crypto_slot_management.c
+    src/psa_layer/cipher_wrap.c
+    src/psa_layer/psa_crypto.c
+    src/psa_layer/psa_crypto_porting.c
     src/psa_layer/entropy.c
     src/tinycrypt/lib/source/aes_decrypt.c
     src/tinycrypt/lib/source/aes_encrypt.c

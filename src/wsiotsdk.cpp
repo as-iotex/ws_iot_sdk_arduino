@@ -1,6 +1,6 @@
 #include "wsiotsdk.h"
-#include "psa/crypto.h"
-#include "application/devnet/iotex_dev_access.h"
+#include "include/psa/crypto.h"
+#include "include/application/devnet/iotex_dev_access.h"
 
 using namespace iotex;
 

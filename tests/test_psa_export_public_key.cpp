@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <string>
+#include <algorithm>
 #include "wsiotsdk.h"
 #include "test_helpers.h"
 

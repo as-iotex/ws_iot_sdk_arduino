@@ -52,7 +52,7 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "tinycrypt/ecc.h"
+#include "tinycrypt/lib/include/tinycrypt/ecc.h"
 #include "tinycrypt/ecc_platform_specific.h"
 #include <string.h>
 

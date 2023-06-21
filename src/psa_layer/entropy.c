@@ -1,4 +1,4 @@
-#include "psa_layer/include/entropy.h"
+#include "include/entropy.h"
 #include "tinycrypt/lib/include/tinycrypt/ecc_platform_specific.h"
 
 void SetEntropy(uint8_t seed)
