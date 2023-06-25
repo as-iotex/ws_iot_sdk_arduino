@@ -2645,7 +2645,9 @@
  *
  * This module enables abstraction of common (libc) functions.
  */
-//#define IOTEX_PLATFORM_C
+#ifdef _WIN32
+    #define IOTEX_PLATFORM_C
+#endif
 
 /**
  * \def IOTEX_POLY1305_C
