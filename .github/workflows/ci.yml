@@ -40,12 +40,10 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        # operating-system: [windows-latest, ubuntu-latest, macos-latest] # Windows not working, needs fixed
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Install Arduino CLI
-            run: |
-              curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+        run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=$HOME/bin sh
 
       - name: Set up Arduino CLI
         run: |
@@ -55,5 +53,4 @@ jobs:
           arduino-cli core install esp32:esp32
 
       - name: Build with Arduino CLI
-        run: |
-          arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ${{github.workspace}}/examples/Aes
+        run: arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ${{github.workspace}}/examples/Aes
