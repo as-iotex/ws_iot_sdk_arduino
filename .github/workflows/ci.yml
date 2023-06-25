@@ -47,6 +47,8 @@ jobs:
           ${{github.workspace}}/bin/arduino-cli core update-index
           ${{github.workspace}}/bin/arduino-cli core install esp32:esp32
           ${{github.workspace}}/bin/arduino-cli config set directories.user ${{github.workspace}}
+          echo ls .
+          echo ls examples
           
       - name: Build with Arduino CLI
-        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ${{github.workspace}}/examples/Aes
+        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/Aes
