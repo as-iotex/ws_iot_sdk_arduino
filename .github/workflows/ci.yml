@@ -15,27 +15,22 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest, macos-latest]
-        # operating-system: [windows-latest, ubuntu-latest, macos-latest] # Windows not working, needs fixed
     runs-on: ${{ matrix.operating-system }}
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Configure CMake
-      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
-    - name: Build with CMake
-      # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      - name: Build with CMake
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-    - name: Test with CMake
-      working-directory: ${{github.workspace}}/build
-      # Execute tests defined by the CMake configuration.
-      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ctest -C ${{env.BUILD_TYPE}}
-  
+      - name: Test with CMake
+        working-directory: ${{github.workspace}}/build
+        run: ctest -C ${{env.BUILD_TYPE}}
+
   build-arduino-cli:
     strategy:
       matrix:
@@ -47,10 +42,10 @@ jobs:
 
       - name: Set up Arduino CLI
         run: |
-          arduino-cli config init
-          arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-          arduino-cli core update-index
-          arduino-cli core install esp32:esp32
+          ${{github.workspace}}/bin/arduino-cli config init
+          ${{github.workspace}}/bin/arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          ${{github.workspace}}/bin/arduino-cli core update-index
+          ${{github.workspace}}/bin/arduino-cli core install esp32:esp32
 
       - name: Build with Arduino CLI
-        run: arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ${{github.workspace}}/examples/Aes
+        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ${{github.workspace}}/examples/Aes
