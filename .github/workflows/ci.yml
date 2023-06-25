@@ -58,8 +58,8 @@ jobs:
           mkdir -p "${ARDUINO_LIB_PATH}"
           cp -R "${REPO_PATH}" "${ARDUINO_LIB_PATH}/"
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+      # - name: Setup upterm session
+      #   uses: lhotari/action-upterm@v1
           
       - name: Build with Arduino CLI
         run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/Aes
