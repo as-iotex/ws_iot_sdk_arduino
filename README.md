@@ -1,99 +1,113 @@
-# Web3 Component for Arduino
+# ArduinoPSA Library
 
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![GitHub release](https://img.shields.io/github/release/machinefi/arduino-psa.svg)](https://github.com/machinefi/arduino-psa/releases)
+[![GitHub CI](https://github.com/machinefi/arduino-psa/actions/workflows/ci.yml/badge.svg)](https://github.com/machinefi/arduino-psa/actions/workflows/ci.yml)
 
+ArduinoPSA is an Arduino library that implements the cryptography functionality of the Platform Security Architecture (PSA) API. It provides a standardized and easy-to-use interface for cryptographic operations on Arduino boards, ensuring secure communication, data integrity, and confidentiality.
 
-## Developing in VSCode
+## Features
 
-Open the folder in VSCode. You whould see a pop up on the bottom left asking to install the recommended extensions. Install them.  
+- **Secure Key Generation**: Generate secure cryptographic keys for various algorithms.
+- **Hash Functions**: Compute hash values using cryptographic hash functions.
+- **Symmetric Encryption**: Encrypt and decrypt data using symmetric encryption algorithms.
+- **Asymmetric Encryption**: Perform public key encryption and decryption operations.
+- **Random Number Generation**: Generate random numbers for secure cryptographic operations.
 
-### Building with VSCode CMake extension
+## Installation
 
-1. Open the Command Palette in VSCode by pressing Ctrl+Shift+P.  
-2. Search for "CMake: Build" and select the "CMake: Build" command.  
+### Arduino IDE
 
-### Running/debugging the tests
+To install the ArduinoPSA library using the Arduino IDE, follow these steps:
 
-1. Ensure you have selected the Debug CMake variant when building the project. Use Ctrl+Shift+P and "CMake: Select variant" to do so.  
-2. Build the project using CMake.  
-3. On the left side panel, click on the Testing extension icon. It should open a list of tests.  
-4. Beside each of the tests, you can see an icon to run the test or debug it.  
+1. Open the Arduino IDE.
+2. Go to **Sketch > Include Library > Manage Libraries**.
+3. The Library Manager window will open, showing a list of available libraries.
+4. In the search bar, type "ArduinoPSA" and press Enter.
+5. Locate the "ArduinoPSA" library in the search results.
+6. Click on the library entry to open its details.
+7. Click the "Install" button to install the library.
+8. Wait for the installation process to complete.
+9. After installation, close the Library Manager window.
+10. The ArduinoPSA library is now installed and ready to be used.
 
-## Configure Your Project
+### Manual Installation
 
-### Dependency:
+To install the ArduinoPSA library manually, follow these steps:
 
-When you connect your device to web3 devnet, you need the appropriate mqtt library, such as the `PubSubClient`  library.
+1. Download the ArduinoPSA library from the [GitHub repository](https://github.com/machinefi/arduino-psa).
+2. Extract the downloaded ZIP file.
+3. Rename the extracted folder to "ArduinoPSA".
+4. Move the "ArduinoPSA" folder to your Arduino libraries directory. The default locations are:
+   - **Windows**: `Documents\Arduino\libraries`
+   - **Mac**: `Documents/Arduino/libraries`
+   - **Linux**: `Arduino/libraries`
+5. Restart the Arduino IDE.
+6. The ArduinoPSA library should now be available under **Sketch > Include Library** menu.
+7. You can now include the library in your Arduino sketches and use its features.
 
+### PlatformIO
 
+To install the ArduinoPSA library using PlatformIO, follow these steps:
 
-## Get Devnet Configuration Parameters
+1. Create a new PlatformIO project or open an existing one.
+2. Open the `platformio.ini` file located in the root of your project.
+3. Add the following line to the `[env:<your_board>]` section:
 
-##### You need to create the project and device from the w3bstream studio page and get the token and mqtt topic, for more detailed instructions, please see the following documentation:
+```ini
+lib_deps =
+    ArduinoPSA
+```
 
-[How to create a w3bstream studio project](./doc/How_to_create_a_w3bstream_studio_project.md)
+Replace <your_board> with the target board/platform for your project (e.g., esp32, arduino_due, etc.).
 
+1. Save the platformio.ini file.
+2. PlatformIO will automatically install the ArduinoPSA library and its dependencies when you build/upload your project.
 
+## Usage
 
-## Use IOTEX WSIoTSDK
+### Arduino IDE
 
-##### 1. Add header file.
+1. Open the Arduino IDE.
+2. Go to File > Examples > ArduinoPSA to access the example sketches.
+3. Select an example sketch to open it.
+4. Modify the sketch as needed to fit your requirements.
+5. Upload the sketch to your Arduino board.
+6. Open the Serial Monitor to view the output.
+
+### PlatformIO
+
+1. Open your PlatformIO project.
+2. Navigate to the src folder.
+3. Create a new .cpp file or open an existing one.
+4. Include the ArduinoPSA library by adding the following line at the top of your file:
 
 ```c++
-#include "wsiotsdk.h"
+# include <ArduinoPSA.h>
 ```
 
-##### 2. Add SDK initialization code.
+For detailed information on using the ArduinoPSA library, including usage examples and API reference, please refer to the [Documentation](docs/).
 
-```c
-time_t iotex_time_set_func(void)
-{
-    return time(nullptr);
-}
+## Compatible Hardware
 
-int iotex_mqtt_pubscription(unsigned char *topic, unsigned char *buf, unsigned int buflen, int qos)
-{
-	return client.publish((const char *)topic, (const uint8_t *)buf, buflen, false);
-}
+The ArduinoPSA library has been tested and is compatible with the following hardware:
 
-int iotex_mqtt_subscription(unsigned char *topic)
-{
-    return client.subscribe((const char *)topic);
-}
+- ESP32
+- Arduino Nano 33 IoT
 
-void setup() {
+Please note that the library may also work with other Arduino-compatible boards, but it has specifically been tested and verified with the above-mentioned hardware.
 
-    .......
-    iotex_wsiotsdk_init(iotex_time_set_func, iotex_mqtt_pubscription, iotex_mqtt_subscription);
-    .......
-}
+It's recommended to check the official documentation of your specific board or consult the manufacturer's specifications to ensure compatibility with the ArduinoPSA library.
 
-```
+## Contributing
 
-##### 3. project configuration
+Contributions are welcome! Please follow the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md) to contribute to this project.
 
-Fill the **token** and **mqtt topic** obtained through **w3bstream studio** into the **iotex_dev_access_config.h** file:
+## License
 
-```c
-#define IOTEX_TOKEN_DEFAULT		        "eyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-#define IOTEX_MQTT_TOPIC_DEFAULT		"eth_xxxxxxxxxxxxxxxxxxx_esp32_hello"
-```
+This library is licensed under Apache License 2.0. See the [LICENSE](LICENSE) file for more information.
 
-##### 4. The project examples provide several examples for uploading user data to w3bstream:
+## Credits
 
-```c
-void iotex_devnet_upload_data_example_json(void);
-void iotex_devnet_upload_data_example_pb(void);
-void iotex_devnet_upload_data_example_raw(void);
-```
-
-##### 5. The user does not need to care about the details of the device's data interaction with w3bstream.
-
-##### 6. All you need to do is pass the data you want to report into the SDK as shown in the example in step 5.
-
-
-
-## IOTEX WSIoTSDK Reference
-
-##### For more information about Iotex WSIoTSDK, please refer to the following document:
-
-[WSIoTSDK User Manual](./doc/WSIoTSDK_User_Manual.md)
+- [IoTeX](https://iotex.io/)
+- [MachineFi](https://github.com/machinefi/)
