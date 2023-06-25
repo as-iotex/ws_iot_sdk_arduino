@@ -43,7 +43,7 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Install Arduino CLI
-        run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=$HOME/bin sh
+        run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
       - name: Set up Arduino CLI
         run: |
