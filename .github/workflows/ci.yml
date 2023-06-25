@@ -47,5 +47,13 @@ jobs:
           ${{github.workspace}}/bin/arduino-cli core update-index
           ${{github.workspace}}/bin/arduino-cli core install esp32:esp32
 
+      - name: Copy Repository to Arduino Library Path
+        run: |
+          ARDUINO_LIB_PATH="${HOME}/Arduino/libraries"
+          REPO_PATH="${{ github.workspace }}"
+
+          mkdir -p "${ARDUINO_LIB_PATH}"
+          cp -R "${REPO_PATH}" "${ARDUINO_LIB_PATH}/"
+
       - name: Build with Arduino CLI
         run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ${{github.workspace}}/examples/Aes
