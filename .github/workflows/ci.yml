@@ -52,6 +52,8 @@ jobs:
           ARDUINO_LIB_PATH="${HOME}/Arduino/libraries"
           REPO_PATH="${{ github.workspace }}"
           cp -R "${REPO_PATH}" "${ARDUINO_LIB_PATH}/"
+          pwd
+          ls
           ls ${{github.workspace}}
           ls ${{github.workspace}}/examples
           ls ${{github.workspace}}/examples/AES
