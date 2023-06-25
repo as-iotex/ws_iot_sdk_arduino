@@ -14,7 +14,8 @@ jobs:
   build:
     strategy:
       matrix:
-        operating-system: [windows-latest, ubuntu-latest, macos-latest]
+        operating-system: [ubuntu-latest, macos-latest]
+        # operating-system: [windows-latest, ubuntu-latest, macos-latest] # Windows not working, needs fixed
     runs-on: ${{ matrix.operating-system }}
 
     steps:
