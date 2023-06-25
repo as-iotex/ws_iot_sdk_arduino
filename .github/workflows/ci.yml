@@ -37,6 +37,9 @@ jobs:
         operating-system: [ubuntu-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Install Arduino CLI
         run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
@@ -50,8 +53,8 @@ jobs:
           echo ls .
           echo ls examples
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+      # - name: Setup upterm session
+      #   uses: lhotari/action-upterm@v1
           
       - name: Build with Arduino CLI
         run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/Aes
