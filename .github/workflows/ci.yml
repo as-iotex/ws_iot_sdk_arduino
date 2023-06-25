@@ -49,6 +49,9 @@ jobs:
           ${{github.workspace}}/bin/arduino-cli config set directories.user ${{github.workspace}}
           echo ls .
           echo ls examples
+
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
           
       - name: Build with Arduino CLI
         run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/Aes
