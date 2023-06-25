@@ -46,19 +46,7 @@ jobs:
           ${{github.workspace}}/bin/arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
           ${{github.workspace}}/bin/arduino-cli core update-index
           ${{github.workspace}}/bin/arduino-cli core install esp32:esp32
-
-      - name: Copy Repository to Arduino Library Path
-        run: |
-          ARDUINO_LIB_PATH="${HOME}/Arduino/libraries"
-          REPO_PATH="${{ github.workspace }}"
-          cp -R "${REPO_PATH}" "${ARDUINO_LIB_PATH}/"
-          arduino-cli config dump
-          pwd
-          ls
-          ls ${{github.workspace}}
-          ls ${{github.workspace}}/examples
-          ls ${{github.workspace}}/examples/AES
+          ${{github.workspace}}/bin/arduino-cli config set directories.user ${{github.workspace}}
           
-
       - name: Build with Arduino CLI
         run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ${{github.workspace}}/examples/Aes
