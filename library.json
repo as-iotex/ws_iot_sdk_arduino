@@ -1,15 +1,15 @@
 {
-  "name": "W3bstreamClient",
-  "description": "A client library for interacting with w3bstream",
+  "name": "ArduinoPSA",
+  "description": "A simple PSA-API client implementation in C++ for the IoTeX blockchain.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iotexproject/arduino-sdk"
+    "url": "https://github.com/machinefi/arduino-psa"
   },
   "version": "0.3.1",
   "authors": [
     {
       "name": "IoTeX",
-      "email": "support@iotex.io",
+      "email": "suppor@iotex.io",
       "url": "https://iotex.io/"
     }
   ],

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "wsiotsdk.h"
+#include "arduinopsa.h"
 #include "test_helpers.h"
 
 class PsaCipherEncryptSetup : public ::testing::Test {
