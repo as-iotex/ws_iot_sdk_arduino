@@ -61,5 +61,23 @@ jobs:
       # - name: Setup upterm session
       #   uses: lhotari/action-upterm@v1
           
-      - name: Build with Arduino CLI
+      - name: Build example with Arduino CLI - Aes
         run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/Aes
+      
+      - name: Build example with Arduino CLI - AesMultipart
+        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/AesMultipart
+      
+      - name: Build example with Arduino CLI - GenerateKey
+        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/GenerateKey
+      
+      - name: Build example with Arduino CLI - GenerateRandom
+        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/GenerateRandom
+      
+      - name: Build example with Arduino CLI - Hash
+        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/Hash
+
+      - name: Build example with Arduino CLI - HashMultipart
+        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/HashMultipart
+      
+      - name: Build example with Arduino CLI - SignMessage
+        run: ${{github.workspace}}/bin/arduino-cli compile --fqbn esp32:esp32:nodemcu-32s ./examples/SignMessage
