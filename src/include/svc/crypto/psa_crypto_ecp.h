@@ -1,8 +1,8 @@
 #ifndef PSA_CRYPTO_ECP_H
 #define PSA_CRYPTO_ECP_H
 
-#include "include/svc/crypto.h"
 #include "include/iotex/ecp.h"
+#include "include/svc/crypto.h"
 
 /** Load the contents of a key buffer into an internal ECP representation
  *
@@ -22,11 +22,9 @@
  *                          contents of the context and the context itself
  *                          when done.
  */
-psa_status_t iotex_psa_ecp_load_representation( psa_key_type_t type,
-                                                  size_t curve_bits,
-                                                  const uint8_t *data,
-                                                  size_t data_length,
-                                                  iotex_ecp_keypair **p_ecp );
+psa_status_t iotex_psa_ecp_load_representation(psa_key_type_t type, size_t curve_bits,
+											   const uint8_t* data, size_t data_length,
+											   iotex_ecp_keypair** p_ecp);
 
 /** Import an ECP key in binary format.
  *
@@ -54,11 +52,10 @@ psa_status_t iotex_psa_ecp_load_representation( psa_key_type_t type,
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_ecp_import_key(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *data, size_t data_length,
-    uint8_t *key_buffer, size_t key_buffer_size,
-    size_t *key_buffer_length, size_t *bits );
+psa_status_t iotex_psa_ecp_import_key(const psa_key_attributes_t* attributes, const uint8_t* data,
+									  size_t data_length, uint8_t* key_buffer,
+									  size_t key_buffer_size, size_t* key_buffer_length,
+									  size_t* bits);
 
 /** Export an ECP key to export representation
  *
@@ -68,11 +65,8 @@ psa_status_t iotex_psa_ecp_import_key(
  * \param[in] data_size     The length of the buffer to export to
  * \param[out] data_length  The amount of bytes written to \p data
  */
-psa_status_t iotex_psa_ecp_export_key( psa_key_type_t type,
-                                         iotex_ecp_keypair *ecp,
-                                         uint8_t *data,
-                                         size_t data_size,
-                                         size_t *data_length );
+psa_status_t iotex_psa_ecp_export_key(psa_key_type_t type, iotex_ecp_keypair* ecp, uint8_t* data,
+									  size_t data_size, size_t* data_length);
 
 /** Export an ECP public key or the public part of an ECP key pair in binary
  *  format.
@@ -98,10 +92,9 @@ psa_status_t iotex_psa_ecp_export_key( psa_key_type_t type,
  * \retval #PSA_ERROR_STORAGE_FAILURE
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  */
-psa_status_t iotex_psa_ecp_export_public_key(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    uint8_t *data, size_t data_size, size_t *data_length );
+psa_status_t iotex_psa_ecp_export_public_key(const psa_key_attributes_t* attributes,
+											 const uint8_t* key_buffer, size_t key_buffer_size,
+											 uint8_t* data, size_t data_size, size_t* data_length);
 
 /**
  * \brief Generate an ECP key.
@@ -122,9 +115,8 @@ psa_status_t iotex_psa_ecp_export_public_key(
  * \retval #PSA_ERROR_BUFFER_TOO_SMALL
  *         The size of \p key_buffer is too small.
  */
-psa_status_t iotex_psa_ecp_generate_key(
-    const psa_key_attributes_t *attributes,
-    uint8_t *key_buffer, size_t key_buffer_size, size_t *key_buffer_length );
+psa_status_t iotex_psa_ecp_generate_key(const psa_key_attributes_t* attributes, uint8_t* key_buffer,
+										size_t key_buffer_size, size_t* key_buffer_length);
 
 /** Sign an already-calculated hash with ECDSA.
  *
@@ -158,11 +150,11 @@ psa_status_t iotex_psa_ecp_generate_key(
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  * \retval #PSA_ERROR_INSUFFICIENT_ENTROPY
  */
-psa_status_t iotex_psa_ecdsa_sign_hash(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    psa_algorithm_t alg, const uint8_t *hash, size_t hash_length,
-    uint8_t *signature, size_t signature_size, size_t *signature_length );
+psa_status_t iotex_psa_ecdsa_sign_hash(const psa_key_attributes_t* attributes,
+									   const uint8_t* key_buffer, size_t key_buffer_size,
+									   psa_algorithm_t alg, const uint8_t* hash, size_t hash_length,
+									   uint8_t* signature, size_t signature_size,
+									   size_t* signature_length);
 
 /**
  * \brief Verify an ECDSA hash or short message signature.
@@ -193,9 +185,9 @@ psa_status_t iotex_psa_ecdsa_sign_hash(
  * \retval #PSA_ERROR_INVALID_ARGUMENT
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  */
-psa_status_t iotex_psa_ecdsa_verify_hash(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    psa_algorithm_t alg, const uint8_t *hash, size_t hash_length,
-    const uint8_t *signature, size_t signature_length );
+psa_status_t iotex_psa_ecdsa_verify_hash(const psa_key_attributes_t* attributes,
+										 const uint8_t* key_buffer, size_t key_buffer_size,
+										 psa_algorithm_t alg, const uint8_t* hash,
+										 size_t hash_length, const uint8_t* signature,
+										 size_t signature_length);
 #endif /* PSA_CRYPTO_ECP_H */

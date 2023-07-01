@@ -35,16 +35,10 @@
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_mac_compute(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer,
-    size_t key_buffer_size,
-    psa_algorithm_t alg,
-    const uint8_t *input,
-    size_t input_length,
-    uint8_t *mac,
-    size_t mac_size,
-    size_t *mac_length);
+psa_status_t iotex_psa_mac_compute(const psa_key_attributes_t* attributes,
+								   const uint8_t* key_buffer, size_t key_buffer_size,
+								   psa_algorithm_t alg, const uint8_t* input, size_t input_length,
+								   uint8_t* mac, size_t mac_size, size_t* mac_length);
 
 /** Set up a multipart MAC calculation operation using Mbed TLS.
  *
@@ -74,12 +68,10 @@ psa_status_t iotex_psa_mac_compute(
  * \retval #PSA_ERROR_BAD_STATE
  *         The operation state is not valid (it must be inactive).
  */
-psa_status_t iotex_psa_mac_sign_setup(
-    iotex_psa_mac_operation_t *operation,
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer,
-    size_t key_buffer_size,
-    psa_algorithm_t alg);
+psa_status_t iotex_psa_mac_sign_setup(iotex_psa_mac_operation_t* operation,
+									  const psa_key_attributes_t* attributes,
+									  const uint8_t* key_buffer, size_t key_buffer_size,
+									  psa_algorithm_t alg);
 
 /** Set up a multipart MAC verification operation using Mbed TLS.
  *
@@ -109,12 +101,10 @@ psa_status_t iotex_psa_mac_sign_setup(
  * \retval #PSA_ERROR_BAD_STATE
  *         The operation state is not valid (it must be inactive).
  */
-psa_status_t iotex_psa_mac_verify_setup(
-    iotex_psa_mac_operation_t *operation,
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer,
-    size_t key_buffer_size,
-    psa_algorithm_t alg);
+psa_status_t iotex_psa_mac_verify_setup(iotex_psa_mac_operation_t* operation,
+										const psa_key_attributes_t* attributes,
+										const uint8_t* key_buffer, size_t key_buffer_size,
+										psa_algorithm_t alg);
 
 /** Add a message fragment to a multipart MAC operation using Mbed TLS.
  *
@@ -141,10 +131,8 @@ psa_status_t iotex_psa_mac_verify_setup(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_mac_update(
-    iotex_psa_mac_operation_t *operation,
-    const uint8_t *input,
-    size_t input_length );
+psa_status_t iotex_psa_mac_update(iotex_psa_mac_operation_t* operation, const uint8_t* input,
+								  size_t input_length);
 
 /** Finish the calculation of the MAC of a message using Mbed TLS.
  *
@@ -183,11 +171,8 @@ psa_status_t iotex_psa_mac_update(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_mac_sign_finish(
-    iotex_psa_mac_operation_t *operation,
-    uint8_t *mac,
-    size_t mac_size,
-    size_t *mac_length );
+psa_status_t iotex_psa_mac_sign_finish(iotex_psa_mac_operation_t* operation, uint8_t* mac,
+									   size_t mac_size, size_t* mac_length);
 
 /** Finish the calculation of the MAC of a message and compare it with
  * an expected value using Mbed TLS.
@@ -224,10 +209,8 @@ psa_status_t iotex_psa_mac_sign_finish(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_mac_verify_finish(
-    iotex_psa_mac_operation_t *operation,
-    const uint8_t *mac,
-    size_t mac_length );
+psa_status_t iotex_psa_mac_verify_finish(iotex_psa_mac_operation_t* operation, const uint8_t* mac,
+										 size_t mac_length);
 
 /** Abort a MAC operation using Mbed TLS.
  *
@@ -250,7 +233,6 @@ psa_status_t iotex_psa_mac_verify_finish(
  * \retval #PSA_SUCCESS
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_mac_abort(
-    iotex_psa_mac_operation_t *operation );
+psa_status_t iotex_psa_mac_abort(iotex_psa_mac_operation_t* operation);
 
 #endif /* PSA_CRYPTO_MAC_H */

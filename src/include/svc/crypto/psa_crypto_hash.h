@@ -12,7 +12,7 @@
  * \return  The Mbed TLS MD information of the hash algorithm. \c NULL if the
  *          PSA hash algorithm is not supported.
  */
-const iotex_md_info_t *iotex_md_info_from_psa( psa_algorithm_t alg );
+const iotex_md_info_t* iotex_md_info_from_psa(psa_algorithm_t alg);
 
 /** Calculate the hash (digest) of a message using Mbed TLS routines.
  *
@@ -40,13 +40,8 @@ const iotex_md_info_t *iotex_md_info_from_psa( psa_algorithm_t alg );
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_hash_compute(
-    psa_algorithm_t alg,
-    const uint8_t *input,
-    size_t input_length,
-    uint8_t *hash,
-    size_t hash_size,
-    size_t *hash_length);
+psa_status_t iotex_psa_hash_compute(psa_algorithm_t alg, const uint8_t* input, size_t input_length,
+									uint8_t* hash, size_t hash_size, size_t* hash_length);
 
 /** Set up a multipart hash operation using Mbed TLS routines.
  *
@@ -80,9 +75,7 @@ psa_status_t iotex_psa_hash_compute(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_hash_setup(
-    iotex_psa_hash_operation_t *operation,
-    psa_algorithm_t alg );
+psa_status_t iotex_psa_hash_setup(iotex_psa_hash_operation_t* operation, psa_algorithm_t alg);
 
 /** Clone an Mbed TLS hash operation.
  *
@@ -112,9 +105,8 @@ psa_status_t iotex_psa_hash_setup(
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  */
-psa_status_t iotex_psa_hash_clone(
-    const iotex_psa_hash_operation_t *source_operation,
-    iotex_psa_hash_operation_t *target_operation );
+psa_status_t iotex_psa_hash_clone(const iotex_psa_hash_operation_t* source_operation,
+								  iotex_psa_hash_operation_t* target_operation);
 
 /** Add a message fragment to a multipart Mbed TLS hash operation.
  *
@@ -139,10 +131,8 @@ psa_status_t iotex_psa_hash_clone(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_hash_update(
-    iotex_psa_hash_operation_t *operation,
-    const uint8_t *input,
-    size_t input_length );
+psa_status_t iotex_psa_hash_update(iotex_psa_hash_operation_t* operation, const uint8_t* input,
+								   size_t input_length);
 
 /** Finish the calculation of the Mbed TLS-calculated hash of a message.
  *
@@ -178,11 +168,8 @@ psa_status_t iotex_psa_hash_update(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_hash_finish(
-    iotex_psa_hash_operation_t *operation,
-    uint8_t *hash,
-    size_t hash_size,
-    size_t *hash_length );
+psa_status_t iotex_psa_hash_finish(iotex_psa_hash_operation_t* operation, uint8_t* hash,
+								   size_t hash_size, size_t* hash_length);
 
 /** Abort an Mbed TLS hash operation.
  *
@@ -208,7 +195,6 @@ psa_status_t iotex_psa_hash_finish(
  * \retval #PSA_SUCCESS
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_hash_abort(
-    iotex_psa_hash_operation_t *operation );
+psa_status_t iotex_psa_hash_abort(iotex_psa_hash_operation_t* operation);
 
 #endif /* PSA_CRYPTO_HASH_H */

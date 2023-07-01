@@ -56,14 +56,13 @@
  *         ciphertext_size is too small.
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_aead_encrypt(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    psa_algorithm_t alg,
-    const uint8_t *nonce, size_t nonce_length,
-    const uint8_t *additional_data, size_t additional_data_length,
-    const uint8_t *plaintext, size_t plaintext_length,
-    uint8_t *ciphertext, size_t ciphertext_size, size_t *ciphertext_length );
+psa_status_t iotex_psa_aead_encrypt(const psa_key_attributes_t* attributes,
+									const uint8_t* key_buffer, size_t key_buffer_size,
+									psa_algorithm_t alg, const uint8_t* nonce, size_t nonce_length,
+									const uint8_t* additional_data, size_t additional_data_length,
+									const uint8_t* plaintext, size_t plaintext_length,
+									uint8_t* ciphertext, size_t ciphertext_size,
+									size_t* ciphertext_length);
 
 /**
  * \brief Process an authenticated decryption operation.
@@ -119,14 +118,13 @@ psa_status_t iotex_psa_aead_encrypt(
  *         plaintext_size is too small.
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t iotex_psa_aead_decrypt(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    psa_algorithm_t alg,
-    const uint8_t *nonce, size_t nonce_length,
-    const uint8_t *additional_data, size_t additional_data_length,
-    const uint8_t *ciphertext, size_t ciphertext_length,
-    uint8_t *plaintext, size_t plaintext_size, size_t *plaintext_length );
+psa_status_t iotex_psa_aead_decrypt(const psa_key_attributes_t* attributes,
+									const uint8_t* key_buffer, size_t key_buffer_size,
+									psa_algorithm_t alg, const uint8_t* nonce, size_t nonce_length,
+									const uint8_t* additional_data, size_t additional_data_length,
+									const uint8_t* ciphertext, size_t ciphertext_length,
+									uint8_t* plaintext, size_t plaintext_size,
+									size_t* plaintext_length);
 
 /** Set the key for a multipart authenticated encryption operation.
  *
@@ -149,8 +147,8 @@ psa_status_t iotex_psa_aead_decrypt(
  *                              operation.
  * \param[in]  key_buffer       The buffer containing the key context.
  * \param      key_buffer_size  Size of the \p key_buffer buffer in bytes.
-                                It must be consistent with the size in bits
-                                recorded in \p attributes.
+								It must be consistent with the size in bits
+								recorded in \p attributes.
  * \param alg                   The AEAD algorithm to compute
  *                              (\c PSA_ALG_XXX value such that
  *                              #PSA_ALG_IS_AEAD(\p alg) is true).
@@ -164,12 +162,10 @@ psa_status_t iotex_psa_aead_decrypt(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  *         Failed to allocate memory for key material
  */
-psa_status_t iotex_psa_aead_encrypt_setup(
-    iotex_psa_aead_operation_t *operation,
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer,
-    size_t key_buffer_size,
-    psa_algorithm_t alg );
+psa_status_t iotex_psa_aead_encrypt_setup(iotex_psa_aead_operation_t* operation,
+										  const psa_key_attributes_t* attributes,
+										  const uint8_t* key_buffer, size_t key_buffer_size,
+										  psa_algorithm_t alg);
 
 /** Set the key for a multipart authenticated decryption operation.
  *
@@ -192,8 +188,8 @@ psa_status_t iotex_psa_aead_encrypt_setup(
  *                              operation.
  * \param[in]  key_buffer       The buffer containing the key context.
  * \param      key_buffer_size  Size of the \p key_buffer buffer in bytes.
-                                It must be consistent with the size in bits
-                                recorded in \p attributes.
+								It must be consistent with the size in bits
+								recorded in \p attributes.
  * \param alg                   The AEAD algorithm to compute
  *                              (\c PSA_ALG_XXX value such that
  *                              #PSA_ALG_IS_AEAD(\p alg) is true).
@@ -207,12 +203,10 @@ psa_status_t iotex_psa_aead_encrypt_setup(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  *         Failed to allocate memory for key material
  */
-psa_status_t iotex_psa_aead_decrypt_setup(
-    iotex_psa_aead_operation_t *operation,
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer,
-    size_t key_buffer_size,
-    psa_algorithm_t alg );
+psa_status_t iotex_psa_aead_decrypt_setup(iotex_psa_aead_operation_t* operation,
+										  const psa_key_attributes_t* attributes,
+										  const uint8_t* key_buffer, size_t key_buffer_size,
+										  psa_algorithm_t alg);
 
 /** Set the nonce for an authenticated encryption or decryption operation.
  *
@@ -242,10 +236,8 @@ psa_status_t iotex_psa_aead_decrypt_setup(
  *         Algorithm previously set is not supported in this configuration of
  *         the library.
  */
-psa_status_t iotex_psa_aead_set_nonce(
-    iotex_psa_aead_operation_t *operation,
-    const uint8_t *nonce,
-    size_t nonce_length );
+psa_status_t iotex_psa_aead_set_nonce(iotex_psa_aead_operation_t* operation, const uint8_t* nonce,
+									  size_t nonce_length);
 
 /** Declare the lengths of the message and additional data for AEAD.
  *
@@ -283,10 +275,8 @@ psa_status_t iotex_psa_aead_set_nonce(
  *         Algorithm previously set is not supported in this configuration of
  *         the library.
  */
-psa_status_t iotex_psa_aead_set_lengths(
-    iotex_psa_aead_operation_t *operation,
-    size_t ad_length,
-    size_t plaintext_length );
+psa_status_t iotex_psa_aead_set_lengths(iotex_psa_aead_operation_t* operation, size_t ad_length,
+										size_t plaintext_length);
 
 /** Pass additional data to an active AEAD operation.
  *
@@ -320,10 +310,8 @@ psa_status_t iotex_psa_aead_set_lengths(
  *         Algorithm previously set is not supported in this configuration of
  *         the library.
  */
-psa_status_t iotex_psa_aead_update_ad(
-    iotex_psa_aead_operation_t *operation,
-    const uint8_t *input,
-    size_t input_length );
+psa_status_t iotex_psa_aead_update_ad(iotex_psa_aead_operation_t* operation, const uint8_t* input,
+									  size_t input_length);
 
 /** Encrypt or decrypt a message fragment in an active AEAD operation.
  *
@@ -380,13 +368,9 @@ psa_status_t iotex_psa_aead_update_ad(
  *         #PSA_AEAD_UPDATE_OUTPUT_MAX_SIZE(\p input_length) can be used to
  *         determine the required buffer size.
  */
-psa_status_t iotex_psa_aead_update(
-    iotex_psa_aead_operation_t *operation,
-    const uint8_t *input,
-    size_t input_length,
-    uint8_t *output,
-    size_t output_size,
-    size_t *output_length );
+psa_status_t iotex_psa_aead_update(iotex_psa_aead_operation_t* operation, const uint8_t* input,
+								   size_t input_length, uint8_t* output, size_t output_size,
+								   size_t* output_length);
 
 /** Finish encrypting a message in an AEAD operation.
  *
@@ -452,14 +436,9 @@ psa_status_t iotex_psa_aead_update(
  *         #PSA_AEAD_TAG_MAX_SIZE can be used to determine the required \p tag
  *         buffer size.
  */
-psa_status_t iotex_psa_aead_finish(
-    iotex_psa_aead_operation_t *operation,
-    uint8_t *ciphertext,
-    size_t ciphertext_size,
-    size_t *ciphertext_length,
-    uint8_t *tag,
-    size_t tag_size,
-    size_t *tag_length );
+psa_status_t iotex_psa_aead_finish(iotex_psa_aead_operation_t* operation, uint8_t* ciphertext,
+								   size_t ciphertext_size, size_t* ciphertext_length, uint8_t* tag,
+								   size_t tag_size, size_t* tag_length);
 
 /** Abort an AEAD operation.
  *
@@ -485,7 +464,6 @@ psa_status_t iotex_psa_aead_finish(
  * \retval #PSA_SUCCESS
  *         Success.
  */
-psa_status_t iotex_psa_aead_abort(
-    iotex_psa_aead_operation_t *operation );
+psa_status_t iotex_psa_aead_abort(iotex_psa_aead_operation_t* operation);
 
 #endif /* PSA_CRYPTO_AEAD */

@@ -6,7 +6,6 @@
 #include "include/iotex/entropy.h"
 #include "include/svc/crypto.h"
 
-
 #if !defined(IOTEX_PSA_CRYPTO_EXTERNAL_RNG)
 /** \brief Configure entropy sources.
  *
@@ -40,15 +39,13 @@
  * \retval #PSA_ERROR_BAD_STATE
  *         The library has already been initialized.
  */
-psa_status_t iotex_psa_crypto_configure_entropy_sources(
-    void (* entropy_init )( iotex_entropy_context *ctx ),
-    void (* entropy_free )( iotex_entropy_context *ctx ) );
+psa_status_t
+	iotex_psa_crypto_configure_entropy_sources(void (*entropy_init)(iotex_entropy_context* ctx),
+											   void (*entropy_free)(iotex_entropy_context* ctx));
 #endif /* !defined(IOTEX_PSA_CRYPTO_EXTERNAL_RNG) */
 
 #if defined(IOTEX_TEST_HOOKS) && defined(IOTEX_PSA_CRYPTO_C)
-psa_status_t psa_mac_key_can_do(
-    psa_algorithm_t algorithm,
-    psa_key_type_t key_type );
+psa_status_t psa_mac_key_can_do(psa_algorithm_t algorithm, psa_key_type_t key_type);
 #endif /* IOTEX_TEST_HOOKS && IOTEX_PSA_CRYPTO_C */
 
 #endif /* PSA_CRYPTO_INVASIVE_H */

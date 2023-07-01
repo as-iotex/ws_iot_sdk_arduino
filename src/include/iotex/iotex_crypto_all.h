@@ -6,10 +6,9 @@
 #include "asn1write.h"
 #include "bignum.h"
 #include "camellia.h"
+#include "ccm.h"
 #include "chacha20.h"
 #include "chachapoly.h"
-#include "include/iotex/cipher.h"
-#include "ccm.h"
 #include "cmac.h"
 #include "des.h"
 #include "ecdh.h"
@@ -17,8 +16,9 @@
 #include "entropy.h"
 #include "error.h"
 #include "gcm.h"
-#include "md5.h"
+#include "include/iotex/cipher.h"
 #include "md.h"
+#include "md5.h"
 #include "pk.h"
 #include "platform_util.h"
 #include "ripemd160.h"
@@ -26,6 +26,5 @@
 #include "sha1.h"
 #include "sha256.h"
 #include "sha512.h"
-
 
 #endif /* IOTEX_CRYPTO_ALL_H */

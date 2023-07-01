@@ -3,5 +3,5 @@
 
 void SetEntropy(uint8_t seed)
 {
-    default_SetSeed(seed);
+	default_SetSeed(seed);
 }

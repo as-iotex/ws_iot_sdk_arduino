@@ -2646,7 +2646,7 @@
  * This module enables abstraction of common (libc) functions.
  */
 #ifdef _WIN32
-    #define IOTEX_PLATFORM_C
+	#define IOTEX_PLATFORM_C
 #endif
 
 /**
@@ -3281,17 +3281,20 @@
 //#define IOTEX_MPI_MAX_SIZE            1024 /**< Maximum number of bytes for usable MPIs. */
 
 /* CTR_DRBG options */
-//#define IOTEX_CTR_DRBG_ENTROPY_LEN               48 /**< Amount of entropy used per seed by default (48 with SHA-512, 32 with SHA-256) */
-//#define IOTEX_CTR_DRBG_RESEED_INTERVAL        10000 /**< Interval before reseed is performed by default */
-//#define IOTEX_CTR_DRBG_MAX_INPUT                256 /**< Maximum number of additional input bytes */
-//#define IOTEX_CTR_DRBG_MAX_REQUEST             1024 /**< Maximum number of requested bytes per call */
-//#define IOTEX_CTR_DRBG_MAX_SEED_INPUT           384 /**< Maximum size of (re)seed buffer */
+//#define IOTEX_CTR_DRBG_ENTROPY_LEN               48 /**< Amount of entropy used per seed by
+// default (48 with SHA-512, 32 with SHA-256) */ #define IOTEX_CTR_DRBG_RESEED_INTERVAL        10000
+///**< Interval before reseed is performed by default */ #define IOTEX_CTR_DRBG_MAX_INPUT 256 /**<
+// Maximum number of additional input bytes */ #define IOTEX_CTR_DRBG_MAX_REQUEST             1024
+///**< Maximum number of requested bytes per call */ #define IOTEX_CTR_DRBG_MAX_SEED_INPUT 384 /**<
+// Maximum size of (re)seed buffer */
 
 /* HMAC_DRBG options */
-//#define IOTEX_HMAC_DRBG_RESEED_INTERVAL   10000 /**< Interval before reseed is performed by default */
-//#define IOTEX_HMAC_DRBG_MAX_INPUT           256 /**< Maximum number of additional input bytes */
-//#define IOTEX_HMAC_DRBG_MAX_REQUEST        1024 /**< Maximum number of requested bytes per call */
-//#define IOTEX_HMAC_DRBG_MAX_SEED_INPUT      384 /**< Maximum size of (re)seed buffer */
+//#define IOTEX_HMAC_DRBG_RESEED_INTERVAL   10000 /**< Interval before reseed is performed by
+// default */ #define IOTEX_HMAC_DRBG_MAX_INPUT           256 /**< Maximum number of additional
+// input bytes */ #define IOTEX_HMAC_DRBG_MAX_REQUEST        1024 /**< Maximum number of requested
+// bytes per call */ #define IOTEX_HMAC_DRBG_MAX_SEED_INPUT      384 /**< Maximum size of (re)seed
+// buffer
+//*/
 
 /* ECP options */
 //#define IOTEX_ECP_WINDOW_SIZE            4 /**< Maximum window size used */
@@ -3299,44 +3302,55 @@
 
 /* Entropy options */
 //#define IOTEX_ENTROPY_MAX_SOURCES                20 /**< Maximum number of sources supported */
-//#define IOTEX_ENTROPY_MAX_GATHER                128 /**< Maximum amount requested from entropy sources */
-//#define IOTEX_ENTROPY_MIN_HARDWARE               32 /**< Default minimum number of bytes required for the hardware entropy source iotex_hardware_poll() before entropy is released */
+//#define IOTEX_ENTROPY_MAX_GATHER                128 /**< Maximum amount requested from entropy
+// sources */ #define IOTEX_ENTROPY_MIN_HARDWARE               32 /**< Default minimum number of
+// bytes required for the hardware entropy source iotex_hardware_poll() before entropy is released
+// */
 
 /* Memory buffer allocator options */
 //#define IOTEX_MEMORY_ALIGN_MULTIPLE      4 /**< Align on multiples of this value */
 
 /* Platform options */
-//#define IOTEX_PLATFORM_STD_MEM_HDR   <stdlib.h> /**< Header to include if IOTEX_PLATFORM_NO_STD_FUNCTIONS is defined. Don't define if no header is needed. */
-//#define IOTEX_PLATFORM_STD_CALLOC        calloc /**< Default allocator to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_FREE            free /**< Default free to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_SETBUF      setbuf /**< Default setbuf to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_EXIT            exit /**< Default exit to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_TIME            time /**< Default time to use, can be undefined. IOTEX_HAVE_TIME must be enabled */
-//#define IOTEX_PLATFORM_STD_FPRINTF      fprintf /**< Default fprintf to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_PRINTF        printf /**< Default printf to use, can be undefined */
+//#define IOTEX_PLATFORM_STD_MEM_HDR   <stdlib.h> /**< Header to include if
+// IOTEX_PLATFORM_NO_STD_FUNCTIONS is defined. Don't define if no header is needed. */ #define
+// IOTEX_PLATFORM_STD_CALLOC        calloc /**< Default allocator to use, can be undefined */
+// #define IOTEX_PLATFORM_STD_FREE            free /**< Default free to use, can be undefined */
+// #define IOTEX_PLATFORM_STD_SETBUF      setbuf /**< Default setbuf to use, can be undefined */
+// #define IOTEX_PLATFORM_STD_EXIT            exit /**< Default exit to use, can be undefined */
+// #define IOTEX_PLATFORM_STD_TIME            time /**< Default time to use, can be undefined.
+// IOTEX_HAVE_TIME must be enabled */ #define IOTEX_PLATFORM_STD_FPRINTF      fprintf /**< Default
+// fprintf to use, can be undefined */ #define IOTEX_PLATFORM_STD_PRINTF        printf /**< Default
+// printf to use, can be undefined */
 /* Note: your snprintf must correctly zero-terminate the buffer! */
 //#define IOTEX_PLATFORM_STD_SNPRINTF    snprintf /**< Default snprintf to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_EXIT_SUCCESS       0 /**< Default exit value to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_EXIT_FAILURE       1 /**< Default exit value to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_NV_SEED_READ   iotex_platform_std_nv_seed_read /**< Default nv_seed_read function to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_NV_SEED_WRITE  iotex_platform_std_nv_seed_write /**< Default nv_seed_write function to use, can be undefined */
-//#define IOTEX_PLATFORM_STD_NV_SEED_FILE  "seedfile" /**< Seed file to read/write with default implementation */
+//#define IOTEX_PLATFORM_STD_EXIT_SUCCESS       0 /**< Default exit value to use, can be undefined
+//*/ #define IOTEX_PLATFORM_STD_EXIT_FAILURE       1 /**< Default exit value to use, can be
+// undefined */ #define IOTEX_PLATFORM_STD_NV_SEED_READ   iotex_platform_std_nv_seed_read /**<
+// Default nv_seed_read function to use, can be undefined */ #define
+// IOTEX_PLATFORM_STD_NV_SEED_WRITE iotex_platform_std_nv_seed_write /**< Default nv_seed_write
+// function to use, can be undefined */ #define IOTEX_PLATFORM_STD_NV_SEED_FILE  "seedfile" /**<
+// Seed file to read/write with default implementation */
 
 /* To Use Function Macros IOTEX_PLATFORM_C must be enabled */
 /* IOTEX_PLATFORM_XXX_MACRO and IOTEX_PLATFORM_XXX_ALT cannot both be defined */
-//#define IOTEX_PLATFORM_CALLOC_MACRO        calloc /**< Default allocator macro to use, can be undefined */
-//#define IOTEX_PLATFORM_FREE_MACRO            free /**< Default free macro to use, can be undefined */
-//#define IOTEX_PLATFORM_EXIT_MACRO            exit /**< Default exit macro to use, can be undefined */
-//#define IOTEX_PLATFORM_SETBUF_MACRO      setbuf /**< Default setbuf macro to use, can be undefined */
-//#define IOTEX_PLATFORM_TIME_MACRO            time /**< Default time macro to use, can be undefined. IOTEX_HAVE_TIME must be enabled */
-//#define IOTEX_PLATFORM_TIME_TYPE_MACRO       time_t /**< Default time macro to use, can be undefined. IOTEX_HAVE_TIME must be enabled */
-//#define IOTEX_PLATFORM_FPRINTF_MACRO      fprintf /**< Default fprintf macro to use, can be undefined */
-//#define IOTEX_PLATFORM_PRINTF_MACRO        printf /**< Default printf macro to use, can be undefined */
+//#define IOTEX_PLATFORM_CALLOC_MACRO        calloc /**< Default allocator macro to use, can be
+// undefined */ #define IOTEX_PLATFORM_FREE_MACRO            free /**< Default free macro to use,
+// can be undefined */ #define IOTEX_PLATFORM_EXIT_MACRO            exit /**< Default exit macro to
+// use, can be undefined */ #define IOTEX_PLATFORM_SETBUF_MACRO      setbuf /**< Default setbuf
+// macro to use, can be undefined */ #define IOTEX_PLATFORM_TIME_MACRO            time /**< Default
+// time macro to use, can be undefined. IOTEX_HAVE_TIME must be enabled */ #define
+// IOTEX_PLATFORM_TIME_TYPE_MACRO       time_t /**< Default time macro to use, can be undefined.
+// IOTEX_HAVE_TIME must be enabled */ #define IOTEX_PLATFORM_FPRINTF_MACRO      fprintf /**< Default
+// fprintf macro to use, can be undefined */ #define IOTEX_PLATFORM_PRINTF_MACRO        printf /**<
+// Default printf macro to use, can be undefined */
 /* Note: your snprintf must correctly zero-terminate the buffer! */
-//#define IOTEX_PLATFORM_SNPRINTF_MACRO    snprintf /**< Default snprintf macro to use, can be undefined */
-//#define IOTEX_PLATFORM_VSNPRINTF_MACRO    vsnprintf /**< Default vsnprintf macro to use, can be undefined */
-//#define IOTEX_PLATFORM_NV_SEED_READ_MACRO   iotex_platform_std_nv_seed_read /**< Default nv_seed_read function to use, can be undefined */
-//#define IOTEX_PLATFORM_NV_SEED_WRITE_MACRO  iotex_platform_std_nv_seed_write /**< Default nv_seed_write function to use, can be undefined */
+//#define IOTEX_PLATFORM_SNPRINTF_MACRO    snprintf /**< Default snprintf macro to use, can be
+// undefined */ #define IOTEX_PLATFORM_VSNPRINTF_MACRO    vsnprintf /**< Default vsnprintf macro to
+// use, can be undefined */ #define IOTEX_PLATFORM_NV_SEED_READ_MACRO
+// iotex_platform_std_nv_seed_read
+///**< Default nv_seed_read function to use, can be undefined */ #define
+// IOTEX_PLATFORM_NV_SEED_WRITE_MACRO  iotex_platform_std_nv_seed_write /**< Default nv_seed_write
+// function to use, can be undefined */
 
 /** \def IOTEX_CHECK_RETURN
  *
@@ -3479,8 +3493,9 @@
  */
 //#define IOTEX_SSL_DTLS_MAX_BUFFERING             32768
 
-//#define IOTEX_PSK_MAX_LEN               32 /**< Max size of TLS pre-shared keys, in bytes (default 256 bits) */
-//#define IOTEX_SSL_COOKIE_TIMEOUT        60 /**< Default expiration delay of DTLS cookies, in seconds if HAVE_TIME, or in number of cookies issued */
+//#define IOTEX_PSK_MAX_LEN               32 /**< Max size of TLS pre-shared keys, in bytes (default
+// 256 bits) */ #define IOTEX_SSL_COOKIE_TIMEOUT        60 /**< Default expiration delay of DTLS
+// cookies, in seconds if HAVE_TIME, or in number of cookies issued */
 
 /** \def IOTEX_TLS_EXT_CID
  *
@@ -3505,11 +3520,13 @@
  *
  * The value below is only an example, not the default.
  */
-//#define IOTEX_SSL_CIPHERSUITES IOTEX_TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,IOTEX_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+//#define IOTEX_SSL_CIPHERSUITES
+// IOTEX_TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,IOTEX_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 /* X509 options */
-//#define IOTEX_X509_MAX_INTERMEDIATE_CA   8   /**< Maximum number of intermediate CAs in a verification chain. */
-//#define IOTEX_X509_MAX_FILE_PATH_LEN     512 /**< Maximum length of a path/filename string in bytes including the null terminator character ('\0'). */
+//#define IOTEX_X509_MAX_INTERMEDIATE_CA   8   /**< Maximum number of intermediate CAs in a
+// verification chain. */ #define IOTEX_X509_MAX_FILE_PATH_LEN     512 /**< Maximum length of a
+// path/filename string in bytes including the null terminator character ('\0'). */
 
 /**
  * Uncomment the macro to let mbed TLS use your alternate implementation of
@@ -3559,33 +3576,32 @@
  */
 //#define IOTEX_ECDH_VARIANT_EVEREST_ENABLED
 
-#define CRYPTO_USE_NOTHING      0
-#define CRYPTO_USE_MBEDTLS      1
-#define CRYPTO_USE_TINYCRYPO    2
-#define CRYPTO_USE_IOTEXCRYPO   3
+#define CRYPTO_USE_NOTHING 0
+#define CRYPTO_USE_MBEDTLS 1
+#define CRYPTO_USE_TINYCRYPO 2
+#define CRYPTO_USE_IOTEXCRYPO 3
 
 //#define IOTEX_PSA_CRYPTO_MODULE_USE   CRYPTO_USE_MBEDTLS
-#define IOTEX_PSA_CRYPTO_MODULE_USE   CRYPTO_USE_TINYCRYPO
+#define IOTEX_PSA_CRYPTO_MODULE_USE CRYPTO_USE_TINYCRYPO
 
-#if ((IOTEX_PSA_CRYPTO_MODULE_USE) == (CRYPTO_USE_MBEDTLS))
-#define IOTEX_PORTING_HEAD_FILE     "layer_conf/iotex_cryto_use_mbedtls.h"
-#define IOTEX_INCLUDE_PRE           mbedtls
+#if((IOTEX_PSA_CRYPTO_MODULE_USE) == (CRYPTO_USE_MBEDTLS))
+	#define IOTEX_PORTING_HEAD_FILE "layer_conf/iotex_cryto_use_mbedtls.h"
+	#define IOTEX_INCLUDE_PRE mbedtls
 
-#define iotex_sha256_info   mbedtls_sha256_info    
-#define iotex_sha224_info   mbedtls_sha224_info
+	#define iotex_sha256_info mbedtls_sha256_info
+	#define iotex_sha224_info mbedtls_sha224_info
 #endif
 
 //#define IOTEX_PSA_CRYPTO_ACCELERATION_ENABLE
 
 #if defined(IOTEX_PSA_CRYPTO_ACCELERATION_ENABLE)
-#define IOTEX_CRYPTO_SHA_ACCELETATION_SUPPORT
-#define IOTEX_CRYPTO_AES_ACCELETATION_SUPPORT
-#define IOTEX_CRYPTO_RSA_ACCELETATION_SUPPORT
-#define IOTEX_CRYPTO_HMAC_ACCELETATION_SUPPORT
+	#define IOTEX_CRYPTO_SHA_ACCELETATION_SUPPORT
+	#define IOTEX_CRYPTO_AES_ACCELETATION_SUPPORT
+	#define IOTEX_CRYPTO_RSA_ACCELETATION_SUPPORT
+	#define IOTEX_CRYPTO_HMAC_ACCELETATION_SUPPORT
 
-#define IOTEX_CRYPTO_CIPHER_ACCELETATION_SUPPORT
+	#define IOTEX_CRYPTO_CIPHER_ACCELETATION_SUPPORT
 #endif
-
 
 //#define IOTEX_CRYPTO_USE_ACCELERATION_LIB
 #define IOTEX_CRYPTO_USE_ACCELERATION_MBEDTLS

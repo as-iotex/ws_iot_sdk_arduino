@@ -5,9 +5,8 @@
 
 #include <stddef.h>
 
-#if ( defined(__ARMCC_VERSION) || defined(_MSC_VER) ) && \
-    !defined(inline) && !defined(__cplusplus)
-#define inline __inline
+#if(defined(__ARMCC_VERSION) || defined(_MSC_VER)) && !defined(inline) && !defined(__cplusplus)
+	#define inline __inline
 #endif
 
 /**
@@ -84,16 +83,17 @@
  */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 /** Generic error */
-#define IOTEX_ERR_ERROR_GENERIC_ERROR       -0x0001
+#define IOTEX_ERR_ERROR_GENERIC_ERROR -0x0001
 /** This is a bug in the library */
 #define IOTEX_ERR_ERROR_CORRUPTION_DETECTED -0x006E
 
 /** Hardware accelerator failed */
-#define IOTEX_ERR_PLATFORM_HW_ACCEL_FAILED     -0x0070
+#define IOTEX_ERR_PLATFORM_HW_ACCEL_FAILED -0x0070
 /** The requested feature is not supported by the platform */
 #define IOTEX_ERR_PLATFORM_FEATURE_UNSUPPORTED -0x0072
 
@@ -103,88 +103,86 @@ extern "C" {
  *        Wrapper macro for iotex_error_add(). See that function for
  *        more details.
  */
-#define IOTEX_ERROR_ADD( high, low ) \
-        iotex_error_add( high, low, __FILE__, __LINE__ )
+#define IOTEX_ERROR_ADD(high, low) iotex_error_add(high, low, __FILE__, __LINE__)
 
 #if defined(IOTEX_TEST_HOOKS)
-/**
- * \brief Testing hook called before adding/combining two error codes together.
- *        Only used when invasive testing is enabled via IOTEX_TEST_HOOKS.
- */
-extern void (*iotex_test_hook_error_add)( int, int, const char *, int );
+	/**
+	 * \brief Testing hook called before adding/combining two error codes together.
+	 *        Only used when invasive testing is enabled via IOTEX_TEST_HOOKS.
+	 */
+	extern void (*iotex_test_hook_error_add)(int, int, const char*, int);
 #endif
 
-/**
- * \brief Combines a high-level and low-level error code together.
- *
- *        This function can be called directly however it is usually
- *        called via the #IOTEX_ERROR_ADD macro.
- *
- *        While a value of zero is not a negative error code, it is still an
- *        error code (that denotes success) and can be combined with both a
- *        negative error code or another value of zero.
- *
- * \note  When invasive testing is enabled via #IOTEX_TEST_HOOKS, also try to
- *        call \link iotex_test_hook_error_add \endlink.
- *
- * \param high      high-level error code. See error.h for more details.
- * \param low       low-level error code. See error.h for more details.
- * \param file      file where this error code addition occurred.
- * \param line      line where this error code addition occurred.
- */
-static inline int iotex_error_add( int high, int low,
-                                     const char *file, int line )
-{
+	/**
+	 * \brief Combines a high-level and low-level error code together.
+	 *
+	 *        This function can be called directly however it is usually
+	 *        called via the #IOTEX_ERROR_ADD macro.
+	 *
+	 *        While a value of zero is not a negative error code, it is still an
+	 *        error code (that denotes success) and can be combined with both a
+	 *        negative error code or another value of zero.
+	 *
+	 * \note  When invasive testing is enabled via #IOTEX_TEST_HOOKS, also try to
+	 *        call \link iotex_test_hook_error_add \endlink.
+	 *
+	 * \param high      high-level error code. See error.h for more details.
+	 * \param low       low-level error code. See error.h for more details.
+	 * \param file      file where this error code addition occurred.
+	 * \param line      line where this error code addition occurred.
+	 */
+	static inline int iotex_error_add(int high, int low, const char* file, int line)
+	{
 #if defined(IOTEX_TEST_HOOKS)
-    if( *iotex_test_hook_error_add != NULL )
-        ( *iotex_test_hook_error_add )( high, low, file, line );
+		if(*iotex_test_hook_error_add != NULL)
+			(*iotex_test_hook_error_add)(high, low, file, line);
 #endif
-    (void)file;
-    (void)line;
+		(void)file;
+		(void)line;
 
-    return( high + low );
-}
+		return (high + low);
+	}
 
-/**
- * \brief Translate a mbed TLS error code into a string representation,
- *        Result is truncated if necessary and always includes a terminating
- *        null byte.
- *
- * \param errnum    error code
- * \param buffer    buffer to place representation in
- * \param buflen    length of the buffer
- */
-void iotex_strerror( int errnum, char *buffer, size_t buflen );
+	/**
+	 * \brief Translate a mbed TLS error code into a string representation,
+	 *        Result is truncated if necessary and always includes a terminating
+	 *        null byte.
+	 *
+	 * \param errnum    error code
+	 * \param buffer    buffer to place representation in
+	 * \param buflen    length of the buffer
+	 */
+	void iotex_strerror(int errnum, char* buffer, size_t buflen);
 
-/**
- * \brief Translate the high-level part of an Mbed TLS error code into a string
- *        representation.
- *
- * This function returns a const pointer to an un-modifiable string. The caller
- * must not try to modify the string. It is intended to be used mostly for
- * logging purposes.
- *
- * \param error_code    error code
- *
- * \return The string representation of the error code, or \c NULL if the error
- *         code is unknown.
- */
-const char * iotex_high_level_strerr( int error_code );
+	/**
+	 * \brief Translate the high-level part of an Mbed TLS error code into a string
+	 *        representation.
+	 *
+	 * This function returns a const pointer to an un-modifiable string. The caller
+	 * must not try to modify the string. It is intended to be used mostly for
+	 * logging purposes.
+	 *
+	 * \param error_code    error code
+	 *
+	 * \return The string representation of the error code, or \c NULL if the error
+	 *         code is unknown.
+	 */
+	const char* iotex_high_level_strerr(int error_code);
 
-/**
- * \brief Translate the low-level part of an Mbed TLS error code into a string
- *        representation.
- *
- * This function returns a const pointer to an un-modifiable string. The caller
- * must not try to modify the string. It is intended to be used mostly for
- * logging purposes.
- *
- * \param error_code    error code
- *
- * \return The string representation of the error code, or \c NULL if the error
- *         code is unknown.
- */
-const char * iotex_low_level_strerr( int error_code );
+	/**
+	 * \brief Translate the low-level part of an Mbed TLS error code into a string
+	 *        representation.
+	 *
+	 * This function returns a const pointer to an un-modifiable string. The caller
+	 * must not try to modify the string. It is intended to be used mostly for
+	 * logging purposes.
+	 *
+	 * \param error_code    error code
+	 *
+	 * \return The string representation of the error code, or \c NULL if the error
+	 *         code is unknown.
+	 */
+	const char* iotex_low_level_strerr(int error_code);
 
 #ifdef __cplusplus
 }

@@ -22,30 +22,33 @@
 #define PSA_CRYPTO_CLIENT_STRUCT_H
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-/* This is the client view of the `key_attributes` structure. Only
- * fields which need to be set by the PSA crypto client are present.
- * The PSA crypto service will maintain a different version of the
- * data structure internally. */
-struct psa_client_key_attributes_s
-{
-    uint16_t type;
-    uint16_t bits;
-    uint32_t lifetime;
-    psa_key_id_t id;
-    uint32_t usage;
-    uint32_t alg;
-    uint32_t alg2;
-    uint16_t flags;
+	/* This is the client view of the `key_attributes` structure. Only
+	 * fields which need to be set by the PSA crypto client are present.
+	 * The PSA crypto service will maintain a different version of the
+	 * data structure internally. */
+	struct psa_client_key_attributes_s
+	{
+		uint16_t type;
+		uint16_t bits;
+		uint32_t lifetime;
+		psa_key_id_t id;
+		uint32_t usage;
+		uint32_t alg;
+		uint32_t alg2;
+		uint16_t flags;
 
-    void * domain_parameters;
-    uint32_t domain_parameters_size;
+		void* domain_parameters;
+		uint32_t domain_parameters_size;
+	};
 
-};
-
-#define PSA_CLIENT_KEY_ATTRIBUTES_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+#define PSA_CLIENT_KEY_ATTRIBUTES_INIT                                                             \
+	{                                                                                              \
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0                                                               \
+	}
 
 #ifdef __cplusplus
 }

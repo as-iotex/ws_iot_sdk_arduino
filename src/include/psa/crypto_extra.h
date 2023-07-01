@@ -18,11 +18,12 @@
 #ifndef PSA_CRYPTO_EXTRA_H
 #define PSA_CRYPTO_EXTRA_H
 
-#include "include/psa/crypto_types.h"
 #include "include/psa/crypto_compat.h"
+#include "include/psa/crypto_types.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 /** \addtogroup crypto_types
@@ -36,7 +37,7 @@ extern "C" {
  * string. The length of the byte string is the length of the base prime `p`
  * in bytes.
  */
-#define PSA_KEY_TYPE_DSA_PUBLIC_KEY                 ((psa_key_type_t)0x4002)
+#define PSA_KEY_TYPE_DSA_PUBLIC_KEY ((psa_key_type_t)0x4002)
 
 /** DSA key pair (private and public key).
  *
@@ -54,9 +55,9 @@ extern "C" {
  * Add 1 to the resulting integer and use this as the private key *x*.
  *
  */
-#define PSA_KEY_TYPE_DSA_KEY_PAIR                    ((psa_key_type_t)0x7002)
+#define PSA_KEY_TYPE_DSA_KEY_PAIR ((psa_key_type_t)0x7002)
 
-/**@}*/
+	/**@}*/
 
 #ifdef __cplusplus
 }

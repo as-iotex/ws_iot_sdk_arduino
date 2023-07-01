@@ -15,8 +15,7 @@
 #include "psa_crypto_storage.h"
 
 #if defined(IOTEX_PSA_CRYPTO_SE_C)
-#include "psa_crypto_se.h"
+	#include "psa_crypto_se.h"
 #endif
-
 
 #endif /* PSA_CRYPTO_ALL_H */

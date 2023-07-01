@@ -13,16 +13,15 @@
  *
  * \return 0 if the buffer contents are equal, non-zero otherwise
  */
-static inline int iotex_psa_safer_memcmp(
-    const uint8_t *a, const uint8_t *b, size_t n )
+static inline int iotex_psa_safer_memcmp(const uint8_t* a, const uint8_t* b, size_t n)
 {
-    size_t i;
-    unsigned char diff = 0;
+	size_t i;
+	unsigned char diff = 0;
 
-    for( i = 0; i < n; i++ )
-        diff |= a[i] ^ b[i];
+	for(i = 0; i < n; i++)
+		diff |= a[i] ^ b[i];
 
-    return( diff );
+	return (diff);
 }
 
 /** The data structure representing a key slot, containing key material
@@ -30,46 +29,45 @@ static inline int iotex_psa_safer_memcmp(
  */
 typedef struct
 {
-    psa_core_key_attributes_t attr;
+	psa_core_key_attributes_t attr;
 
-    /*
-     * Number of locks on the key slot held by the library.
-     *
-     * This counter is incremented by one each time a library function
-     * retrieves through one of the dedicated internal API a pointer to the
-     * key slot.
-     *
-     * This counter is decremented by one each time a library function stops
-     * accessing the key slot and states it by calling the
-     * psa_unlock_key_slot() API.
-     *
-     * This counter is used to prevent resetting the key slot while the library
-     * may access it. For example, such control is needed in the following
-     * scenarios:
-     * . In case of key slot starvation, all key slots contain the description
-     *   of a key, and the library asks for the description of a persistent
-     *   key not present in the key slots, the key slots currently accessed by
-     *   the library cannot be reclaimed to free a key slot to load the
-     *   persistent key.
-     * . In case of a multi-threaded application where one thread asks to close
-     *   or purge or destroy a key while it is in used by the library through
-     *   another thread.
-     */
-    size_t lock_count;
+	/*
+	 * Number of locks on the key slot held by the library.
+	 *
+	 * This counter is incremented by one each time a library function
+	 * retrieves through one of the dedicated internal API a pointer to the
+	 * key slot.
+	 *
+	 * This counter is decremented by one each time a library function stops
+	 * accessing the key slot and states it by calling the
+	 * psa_unlock_key_slot() API.
+	 *
+	 * This counter is used to prevent resetting the key slot while the library
+	 * may access it. For example, such control is needed in the following
+	 * scenarios:
+	 * . In case of key slot starvation, all key slots contain the description
+	 *   of a key, and the library asks for the description of a persistent
+	 *   key not present in the key slots, the key slots currently accessed by
+	 *   the library cannot be reclaimed to free a key slot to load the
+	 *   persistent key.
+	 * . In case of a multi-threaded application where one thread asks to close
+	 *   or purge or destroy a key while it is in used by the library through
+	 *   another thread.
+	 */
+	size_t lock_count;
 
-    /* Dynamically allocated key data buffer.
-     * Format as specified in psa_export_key(). */
-    struct key_data
-    {
-        uint8_t *data;
-        size_t bytes;
-    } key;
+	/* Dynamically allocated key data buffer.
+	 * Format as specified in psa_export_key(). */
+	struct key_data
+	{
+		uint8_t* data;
+		size_t bytes;
+	} key;
 } psa_key_slot_t;
 
 /* A mask of key attribute flags used only internally.
  * Currently there aren't any. */
-#define PSA_KA_MASK_INTERNAL_ONLY (     \
-        0 )
+#define PSA_KA_MASK_INTERNAL_ONLY (0)
 
 /** Test whether a key slot is occupied.
  *
@@ -80,9 +78,9 @@ typedef struct
  *
  * \return 1 if the slot is occupied, 0 otherwise.
  */
-static inline int psa_is_key_slot_occupied( const psa_key_slot_t *slot )
+static inline int psa_is_key_slot_occupied(const psa_key_slot_t* slot)
 {
-    return( slot->attr.type != 0 );
+	return (slot->attr.type != 0);
 }
 
 /** Test whether a key slot is locked.
@@ -93,9 +91,9 @@ static inline int psa_is_key_slot_occupied( const psa_key_slot_t *slot )
  *
  * \return 1 if the slot is locked, 0 otherwise.
  */
-static inline int psa_is_key_slot_locked( const psa_key_slot_t *slot )
+static inline int psa_is_key_slot_locked(const psa_key_slot_t* slot)
 {
-    return( slot->lock_count > 0 );
+	return (slot->lock_count > 0);
 }
 
 /** Retrieve flags from psa_key_slot_t::attr::core::flags.
@@ -106,10 +104,9 @@ static inline int psa_is_key_slot_locked( const psa_key_slot_t *slot )
  * \return The key attribute flags in the given slot,
  *         bitwise-anded with \p mask.
  */
-static inline uint16_t psa_key_slot_get_flags( const psa_key_slot_t *slot,
-                                               uint16_t mask )
+static inline uint16_t psa_key_slot_get_flags(const psa_key_slot_t* slot, uint16_t mask)
 {
-    return( slot->attr.flags & mask );
+	return (slot->attr.flags & mask);
 }
 
 /** Set flags in psa_key_slot_t::attr::core::flags.
@@ -118,12 +115,9 @@ static inline uint16_t psa_key_slot_get_flags( const psa_key_slot_t *slot,
  * \param mask          The mask of bits to modify.
  * \param value         The new value of the selected bits.
  */
-static inline void psa_key_slot_set_flags( psa_key_slot_t *slot,
-                                           uint16_t mask,
-                                           uint16_t value )
+static inline void psa_key_slot_set_flags(psa_key_slot_t* slot, uint16_t mask, uint16_t value)
 {
-    slot->attr.flags = ( ( ~mask & slot->attr.flags ) |
-                              ( mask & value ) );
+	slot->attr.flags = ((~mask & slot->attr.flags) | (mask & value));
 }
 
 /** Turn on flags in psa_key_slot_t::attr::core::flags.
@@ -131,10 +125,9 @@ static inline void psa_key_slot_set_flags( psa_key_slot_t *slot,
  * \param[in,out] slot  The key slot to modify.
  * \param mask          The mask of bits to set.
  */
-static inline void psa_key_slot_set_bits_in_flags( psa_key_slot_t *slot,
-                                                   uint16_t mask )
+static inline void psa_key_slot_set_bits_in_flags(psa_key_slot_t* slot, uint16_t mask)
 {
-    slot->attr.flags |= mask;
+	slot->attr.flags |= mask;
 }
 
 /** Turn off flags in psa_key_slot_t::attr::core::flags.
@@ -142,10 +135,9 @@ static inline void psa_key_slot_set_bits_in_flags( psa_key_slot_t *slot,
  * \param[in,out] slot  The key slot to modify.
  * \param mask          The mask of bits to clear.
  */
-static inline void psa_key_slot_clear_bits( psa_key_slot_t *slot,
-                                            uint16_t mask )
+static inline void psa_key_slot_clear_bits(psa_key_slot_t* slot, uint16_t mask)
 {
-    slot->attr.flags &= ~mask;
+	slot->attr.flags &= ~mask;
 }
 
 #if defined(IOTEX_PSA_CRYPTO_SE_C)
@@ -155,10 +147,9 @@ static inline void psa_key_slot_clear_bits( psa_key_slot_t *slot,
  *                   the description of a key of a dynamically registered
  *                   secure element, otherwise the behaviour is undefined.
  */
-static inline psa_key_slot_number_t psa_key_slot_get_slot_number(
-    const psa_key_slot_t *slot )
+static inline psa_key_slot_number_t psa_key_slot_get_slot_number(const psa_key_slot_t* slot)
 {
-    return( *( (psa_key_slot_number_t *)( slot->key.data ) ) );
+	return (*((psa_key_slot_number_t*)(slot->key.data)));
 }
 #endif
 
@@ -173,7 +164,7 @@ static inline psa_key_slot_number_t psa_key_slot_get_slot_number(
  *         already fully wiped.
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t psa_wipe_key_slot( psa_key_slot_t *slot );
+psa_status_t psa_wipe_key_slot(psa_key_slot_t* slot);
 
 /** Try to allocate a buffer to an empty key slot.
  *
@@ -187,11 +178,10 @@ psa_status_t psa_wipe_key_slot( psa_key_slot_t *slot );
  * \retval #PSA_ERROR_ALREADY_EXISTS
  *         Trying to allocate a buffer to a non-empty key slot.
  */
-psa_status_t psa_allocate_buffer_to_slot( psa_key_slot_t *slot,
-                                          size_t buffer_length );
+psa_status_t psa_allocate_buffer_to_slot(psa_key_slot_t* slot, size_t buffer_length);
 
 /** Wipe key data from a slot. Preserves metadata such as the policy. */
-psa_status_t psa_remove_key_data_from_memory( psa_key_slot_t *slot );
+psa_status_t psa_remove_key_data_from_memory(psa_key_slot_t* slot);
 
 /** Copy key data (in export format) into an empty key slot.
  *
@@ -210,9 +200,8 @@ psa_status_t psa_remove_key_data_from_memory( psa_key_slot_t *slot );
  * \retval #PSA_ERROR_ALREADY_EXISTS
  *         There was other key material already present in the slot.
  */
-psa_status_t psa_copy_key_material_into_slot( psa_key_slot_t *slot,
-                                              const uint8_t *data,
-                                              size_t data_length );
+psa_status_t psa_copy_key_material_into_slot(psa_key_slot_t* slot, const uint8_t* data,
+											 size_t data_length);
 
 /** Convert an mbed TLS error code to a PSA error code
  *
@@ -223,7 +212,7 @@ psa_status_t psa_copy_key_material_into_slot( psa_key_slot_t *slot,
  *
  * \return              The corresponding PSA error code
  */
-psa_status_t iotex_to_psa_error( int ret );
+psa_status_t iotex_to_psa_error(int ret);
 
 /** Get Mbed TLS cipher information given the cipher algorithm PSA identifier
  *  as well as the PSA type and size of the key to be used with the cipher
@@ -237,9 +226,9 @@ psa_status_t iotex_to_psa_error( int ret );
  * \return  The Mbed TLS cipher information of the cipher algorithm.
  *          \c NULL if the PSA cipher algorithm is not supported.
  */
-const iotex_cipher_info_t *iotex_cipher_info_from_psa(
-    psa_algorithm_t alg, psa_key_type_t key_type, size_t key_bits,
-    iotex_cipher_id_t *cipher_id );
+const iotex_cipher_info_t* iotex_cipher_info_from_psa(psa_algorithm_t alg, psa_key_type_t key_type,
+													  size_t key_bits,
+													  iotex_cipher_id_t* cipher_id);
 
 /** Import a key in binary format.
  *
@@ -267,11 +256,10 @@ const iotex_cipher_info_t *iotex_cipher_info_from_psa(
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  */
-psa_status_t psa_import_key_into_slot(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *data, size_t data_length,
-    uint8_t *key_buffer, size_t key_buffer_size,
-    size_t *key_buffer_length, size_t *bits );
+psa_status_t psa_import_key_into_slot(const psa_key_attributes_t* attributes, const uint8_t* data,
+									  size_t data_length, uint8_t* key_buffer,
+									  size_t key_buffer_size, size_t* key_buffer_length,
+									  size_t* bits);
 
 /** Export a key in binary format
  *
@@ -295,10 +283,9 @@ psa_status_t psa_import_key_into_slot(
  * \retval #PSA_ERROR_STORAGE_FAILURE
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  */
-psa_status_t psa_export_key_internal(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    uint8_t *data, size_t data_size, size_t *data_length );
+psa_status_t psa_export_key_internal(const psa_key_attributes_t* attributes,
+									 const uint8_t* key_buffer, size_t key_buffer_size,
+									 uint8_t* data, size_t data_size, size_t* data_length);
 
 /** Export a public key or the public part of a key pair in binary format.
  *
@@ -323,10 +310,9 @@ psa_status_t psa_export_key_internal(
  * \retval #PSA_ERROR_STORAGE_FAILURE
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  */
-psa_status_t psa_export_public_key_internal(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    uint8_t *data, size_t data_size, size_t *data_length );
+psa_status_t psa_export_public_key_internal(const psa_key_attributes_t* attributes,
+											const uint8_t* key_buffer, size_t key_buffer_size,
+											uint8_t* data, size_t data_size, size_t* data_length);
 
 /**
  * \brief Generate a key.
@@ -348,10 +334,8 @@ psa_status_t psa_export_public_key_internal(
  * \retval #PSA_ERROR_BUFFER_TOO_SMALL
  *         The size of \p key_buffer is too small.
  */
-psa_status_t psa_generate_key_internal( const psa_key_attributes_t *attributes,
-                                        uint8_t *key_buffer,
-                                        size_t key_buffer_size,
-                                        size_t *key_buffer_length );
+psa_status_t psa_generate_key_internal(const psa_key_attributes_t* attributes, uint8_t* key_buffer,
+									   size_t key_buffer_size, size_t* key_buffer_length);
 
 /** Sign a message with a private key. For hash-and-sign algorithms,
  *  this includes the hashing step.
@@ -390,11 +374,11 @@ psa_status_t psa_generate_key_internal( const psa_key_attributes_t *attributes,
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  * \retval #PSA_ERROR_INSUFFICIENT_ENTROPY
  */
-psa_status_t psa_sign_message_builtin(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    psa_algorithm_t alg, const uint8_t *input, size_t input_length,
-    uint8_t *signature, size_t signature_size, size_t *signature_length );
+psa_status_t psa_sign_message_builtin(const psa_key_attributes_t* attributes,
+									  const uint8_t* key_buffer, size_t key_buffer_size,
+									  psa_algorithm_t alg, const uint8_t* input,
+									  size_t input_length, uint8_t* signature,
+									  size_t signature_size, size_t* signature_length);
 
 /** Verify the signature of a message with a public key, using
  *  a hash-and-sign verification algorithm.
@@ -427,11 +411,11 @@ psa_status_t psa_sign_message_builtin(
  * \retval #PSA_ERROR_INVALID_ARGUMENT
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  */
-psa_status_t psa_verify_message_builtin(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    psa_algorithm_t alg, const uint8_t *input, size_t input_length,
-    const uint8_t *signature, size_t signature_length );
+psa_status_t psa_verify_message_builtin(const psa_key_attributes_t* attributes,
+										const uint8_t* key_buffer, size_t key_buffer_size,
+										psa_algorithm_t alg, const uint8_t* input,
+										size_t input_length, const uint8_t* signature,
+										size_t signature_length);
 
 /** Sign an already-calculated hash with a private key.
  *
@@ -466,11 +450,11 @@ psa_status_t psa_verify_message_builtin(
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  * \retval #PSA_ERROR_INSUFFICIENT_ENTROPY
  */
-psa_status_t psa_sign_hash_builtin(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    psa_algorithm_t alg, const uint8_t *hash, size_t hash_length,
-    uint8_t *signature, size_t signature_size, size_t *signature_length );
+psa_status_t psa_sign_hash_builtin(const psa_key_attributes_t* attributes,
+								   const uint8_t* key_buffer, size_t key_buffer_size,
+								   psa_algorithm_t alg, const uint8_t* hash, size_t hash_length,
+								   uint8_t* signature, size_t signature_size,
+								   size_t* signature_length);
 
 /**
  * \brief Verify the signature a hash or short message using a public key.
@@ -501,11 +485,10 @@ psa_status_t psa_sign_hash_builtin(
  * \retval #PSA_ERROR_INVALID_ARGUMENT
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  */
-psa_status_t psa_verify_hash_builtin(
-    const psa_key_attributes_t *attributes,
-    const uint8_t *key_buffer, size_t key_buffer_size,
-    psa_algorithm_t alg, const uint8_t *hash, size_t hash_length,
-    const uint8_t *signature, size_t signature_length );
+psa_status_t psa_verify_hash_builtin(const psa_key_attributes_t* attributes,
+									 const uint8_t* key_buffer, size_t key_buffer_size,
+									 psa_algorithm_t alg, const uint8_t* hash, size_t hash_length,
+									 const uint8_t* signature, size_t signature_length);
 
 /**
  * \brief Validate the key bit size for unstructured keys.
@@ -524,6 +507,5 @@ psa_status_t psa_verify_hash_builtin(
  *         The type and/or the size in bits of the key or the combination of
  *         the two is not supported.
  */
-psa_status_t psa_validate_unstructured_key_bit_size( psa_key_type_t type,
-                                                     size_t bits );
+psa_status_t psa_validate_unstructured_key_bit_size(psa_key_type_t type, size_t bits);
 #endif /* PSA_CRYPTO_CORE_H */

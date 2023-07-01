@@ -7,9 +7,8 @@
 /* PSA requires several types which C99 provides in stdint.h. */
 #include <stdint.h>
 
-#if ( defined(__ARMCC_VERSION) || defined(_MSC_VER) ) && \
-    !defined(inline) && !defined(__cplusplus)
-#define inline __inline
+#if(defined(__ARMCC_VERSION) || defined(_MSC_VER)) && !defined(inline) && !defined(__cplusplus)
+	#define inline __inline
 #endif
 
 /*
@@ -20,13 +19,14 @@
  * included.
  */
 #if defined(IOTEX_PSA_CRYPTO_SPM)
-#define PSA_CRYPTO_SECURE 1
-#include "../iotex/crypto_spe.h"
+	#define PSA_CRYPTO_SECURE 1
+	#include "../iotex/crypto_spe.h"
 #endif // IOTEX_PSA_CRYPTO_SPM
 
 #if defined(IOTEX_PSA_CRYPTO_EXTERNAL_RNG)
-typedef struct {
-    uintptr_t opaque[2];
+typedef struct
+{
+	uintptr_t opaque[2];
 } iotex_psa_external_random_context_t;
 #endif /* IOTEX_PSA_CRYPTO_EXTERNAL_RNG */
 

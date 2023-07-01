@@ -15,12 +15,11 @@
 
 /** The minimum value for a volatile key identifier.
  */
-#define PSA_KEY_ID_VOLATILE_MIN  ( PSA_KEY_ID_VENDOR_MAX - \
-                                   IOTEX_PSA_KEY_SLOT_COUNT + 1 )
+#define PSA_KEY_ID_VOLATILE_MIN (PSA_KEY_ID_VENDOR_MAX - IOTEX_PSA_KEY_SLOT_COUNT + 1)
 
 /** The maximum value for a volatile key identifier.
  */
-#define PSA_KEY_ID_VOLATILE_MAX  PSA_KEY_ID_VENDOR_MAX
+#define PSA_KEY_ID_VOLATILE_MAX PSA_KEY_ID_VENDOR_MAX
 
 /** Test whether a key identifier is a volatile key identifier.
  *
@@ -31,10 +30,9 @@
  * \retval 0
  *         The key identifier is not a volatile key identifier.
  */
-static inline int psa_key_id_is_volatile( psa_key_id_t key_id )
+static inline int psa_key_id_is_volatile(psa_key_id_t key_id)
 {
-    return( ( key_id >= PSA_KEY_ID_VOLATILE_MIN ) &&
-            ( key_id <= PSA_KEY_ID_VOLATILE_MAX ) );
+	return ((key_id >= PSA_KEY_ID_VOLATILE_MIN) && (key_id <= PSA_KEY_ID_VOLATILE_MAX));
 }
 
 /** Get the description of a key given its identifier and lock it.
@@ -72,20 +70,19 @@ static inline int psa_key_id_is_volatile( psa_key_id_t key_id )
  * \retval #PSA_ERROR_STORAGE_FAILURE
  * \retval #PSA_ERROR_DATA_CORRUPT
  */
-psa_status_t psa_get_and_lock_key_slot( psa_key_id_t key,
-                                        psa_key_slot_t **p_slot );
+psa_status_t psa_get_and_lock_key_slot(psa_key_id_t key, psa_key_slot_t** p_slot);
 
 /** Initialize the key slot structures.
  *
  * \retval #PSA_SUCCESS
  *         Currently this function always succeeds.
  */
-psa_status_t psa_initialize_key_slots( void );
+psa_status_t psa_initialize_key_slots(void);
 
 /** Delete all data from key slots in memory.
  *
  * This does not affect persistent storage. */
-void psa_wipe_all_key_slots( void );
+void psa_wipe_all_key_slots(void);
 
 /** Find a free key slot.
  *
@@ -102,8 +99,7 @@ void psa_wipe_all_key_slots( void );
  * \retval #PSA_ERROR_INSUFFICIENT_MEMORY
  * \retval #PSA_ERROR_BAD_STATE
  */
-psa_status_t psa_get_empty_key_slot( psa_key_id_t *volatile_key_id,
-                                     psa_key_slot_t **p_slot );
+psa_status_t psa_get_empty_key_slot(psa_key_id_t* volatile_key_id, psa_key_slot_t** p_slot);
 
 /** Lock a key slot.
  *
@@ -112,19 +108,19 @@ psa_status_t psa_get_empty_key_slot( psa_key_id_t *volatile_key_id,
  * \param[in] slot  The key slot.
  *
  * \retval #PSA_SUCCESS
-               The key slot lock counter was incremented.
+			   The key slot lock counter was incremented.
  * \retval #PSA_ERROR_CORRUPTION_DETECTED
  *             The lock counter already reached its maximum value and was not
  *             increased.
  */
-static inline psa_status_t psa_lock_key_slot( psa_key_slot_t *slot )
+static inline psa_status_t psa_lock_key_slot(psa_key_slot_t* slot)
 {
-    if( slot->lock_count >= SIZE_MAX )
-        return( PSA_ERROR_CORRUPTION_DETECTED );
+	if(slot->lock_count >= SIZE_MAX)
+		return (PSA_ERROR_CORRUPTION_DETECTED);
 
-    slot->lock_count++;
+	slot->lock_count++;
 
-    return( PSA_SUCCESS );
+	return (PSA_SUCCESS);
 }
 
 /** Unlock a key slot.
@@ -143,7 +139,7 @@ static inline psa_status_t psa_lock_key_slot( psa_key_slot_t *slot )
  *             The lock counter was equal to 0.
  *
  */
-psa_status_t psa_unlock_key_slot( psa_key_slot_t *slot );
+psa_status_t psa_unlock_key_slot(psa_key_slot_t* slot);
 
 /** Test whether a lifetime designates a key in an external cryptoprocessor.
  *
@@ -157,10 +153,9 @@ psa_status_t psa_unlock_key_slot( psa_key_slot_t *slot );
  *         The lifetime designates a key that is volatile or in internal
  *         storage.
  */
-static inline int psa_key_lifetime_is_external( psa_key_lifetime_t lifetime )
+static inline int psa_key_lifetime_is_external(psa_key_lifetime_t lifetime)
 {
-    return( PSA_KEY_LIFETIME_GET_LOCATION( lifetime )
-                != PSA_KEY_LOCATION_LOCAL_STORAGE );
+	return (PSA_KEY_LIFETIME_GET_LOCATION(lifetime) != PSA_KEY_LOCATION_LOCAL_STORAGE);
 }
 
 /** Validate a key's location.
@@ -177,8 +172,8 @@ static inline int psa_key_lifetime_is_external( psa_key_lifetime_t lifetime )
  * \retval #PSA_SUCCESS
  * \retval #PSA_ERROR_INVALID_ARGUMENT
  */
-psa_status_t psa_validate_key_location( psa_key_lifetime_t lifetime,
-                                        psa_se_drv_table_entry_t **p_drv );
+psa_status_t psa_validate_key_location(psa_key_lifetime_t lifetime,
+									   psa_se_drv_table_entry_t** p_drv);
 
 /** Validate the persistence of a key.
  *
@@ -188,7 +183,7 @@ psa_status_t psa_validate_key_location( psa_key_lifetime_t lifetime,
  * \retval #PSA_ERROR_NOT_SUPPORTED The key is persistent but persistent keys
  *             are not supported.
  */
-psa_status_t psa_validate_key_persistence( psa_key_lifetime_t lifetime );
+psa_status_t psa_validate_key_persistence(psa_key_lifetime_t lifetime);
 
 /** Validate a key identifier.
  *
@@ -199,6 +194,6 @@ psa_status_t psa_validate_key_persistence( psa_key_lifetime_t lifetime );
  *
  * \retval <> 0 if the key identifier is valid, 0 otherwise.
  */
-int psa_is_valid_key_id( psa_key_id_t key, int vendor_ok );
+int psa_is_valid_key_id(psa_key_id_t key, int vendor_ok);
 
 #endif /* PSA_CRYPTO_SLOT_MANAGEMENT_H */
