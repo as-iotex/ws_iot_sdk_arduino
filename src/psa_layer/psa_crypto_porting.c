@@ -315,7 +315,7 @@ inline void iotex_md5_clone( iotex_md5_context *dst, const iotex_md5_context *sr
 inline int iotex_md5_starts( iotex_md5_context *ctx )
 {
     // TODO return iotex_md5_starts_ret( (iotex_md5_context *)ctx );
-    return 0
+    return 0;
 }
 
 inline int iotex_md5_update( iotex_md5_context *ctx, const unsigned char *input, size_t ilen )
