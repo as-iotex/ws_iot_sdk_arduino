@@ -16,12 +16,6 @@ void setup()
   // Define a variable status that will be used to store the result of the PSA API calls.
   psa_status_t status = PSA_SUCCESS;
 
-  // The operation structure that will be used to store the operation context for the encrypt operation.
-  psa_cipher_operation_t encryptOperation = PSA_CIPHER_OPERATION_INIT;
-
-  // The operation structure that will be used to store the operation context for the decrypt operation.
-  psa_cipher_operation_t decryptOperation = PSA_CIPHER_OPERATION_INIT;
-
   // The data to sign.
   uint8_t message[64] =
   {
