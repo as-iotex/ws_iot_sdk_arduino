@@ -1,0 +1,44 @@
+name: Arduino CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  arduino:
+    strategy:
+      matrix:
+          arduino-platform: ["arduino:samd", "esp32:esp32"]
+          include:
+            - arduino-platform: "arduino:samd"
+              fqbn: "arduino:samd:nano_33_iot"
+            - arduino-platform: "esp32:esp32"
+              fqbn: "esp32:esp32:nodemcu-32s"
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Arduino Lint
+        uses: arduino/arduino-lint-action@v1
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+      
+      - name: Add ESP32 package index URL
+        run: arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+
+      - name: Install platform
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install ${{ matrix.arduino-platform }}
+
+      - name: Build examples with Arduino
+        uses: Arduino-CI/action@stable-1.x
+
+      # - name: Compile Sketch
+      #   run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./blink
+  

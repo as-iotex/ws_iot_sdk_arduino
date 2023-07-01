@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <string>
 #include <algorithm>
-#include "arduinopsa.h"
+#include "psacrypto.h"
 #include "test_helpers.h"
 
 class PsaExportPublicKey : public ::testing::Test {

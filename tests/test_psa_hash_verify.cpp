@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "arduinopsa.h"
+#include "psacrypto.h"
 #include "test_helpers.h"
 
 class PsaHashVerify : public ::testing::Test {

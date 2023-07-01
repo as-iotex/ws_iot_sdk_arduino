@@ -1,6 +1,6 @@
 {
-  "name": "ArduinoPSA",
-  "description": "A simple PSA-API client implementation in C++ for the IoTeX blockchain.",
+  "name": "PSACrypto",
+  "description": "An implementation of the Platform Security Architecture Crypto API for Arduino.",
   "repository": {
     "type": "git",
     "url": "https://github.com/machinefi/arduino-psa"

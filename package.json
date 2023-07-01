@@ -1,5 +1,5 @@
 {
-  "name": "ArduinoPsa",
+  "name": "PSACrypto",
   "version": "0.3.1",
   "description": "A simple PSA-API client implementation in C++ for the IoTeX blockchain.",
   "main": "",
