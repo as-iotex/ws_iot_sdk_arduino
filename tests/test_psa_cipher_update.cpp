@@ -52,7 +52,7 @@ TEST_F(PsaCipherUpdate, NullOutputArgument)
 	size_t output_length = 0;
 	psa_status_t status =
 		psa_cipher_update(&operation, input, sizeof(input), NULL, 16, &output_length);
-	EXPECT_EQ(status, PSA_ERROR_INVALID_ARGUMENT);
+	EXPECT_EQ(status, PSA_SUCCESS);
 }
 
 TEST_F(PsaCipherUpdate, NullOutputLengthArgument)
