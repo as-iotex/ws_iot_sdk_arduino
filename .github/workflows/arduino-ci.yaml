@@ -29,7 +29,7 @@ jobs:
         uses: arduino/setup-arduino-cli@v1
       
       - name: Add ESP32 package index URL
-        if: matrix.arduino-platform == "esp32:esp32"
+        if: ${{ matrix.arduino-platform == 'esp32:esp32' }}
         run: | 
           arduino-cli config init
           arduino-cli core update-index
