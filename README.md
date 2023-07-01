@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub release](https://img.shields.io/github/release/machinefi/psa-crypto.svg)](https://github.com/machinefi/psa-crypto/releases)
-[![Unit Tests](https://github.com/machinefi/psa-crypto/workflows/ci/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/ci.yml)
+[![Unit Tests](https://github.com/machinefi/psa-crypto/workflows/Run%20unit%20tests/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/ci.yml)
 [![Arduino CI](https://github.com/machinefi/psa-crypto/workflows/Arduino%20CI/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/arduino-ci.yml)
 [![Code Formatting](https://github.com/machinefi/psa-crypto/workflows/Code%20formatting/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/code-formatting.yml)
 
