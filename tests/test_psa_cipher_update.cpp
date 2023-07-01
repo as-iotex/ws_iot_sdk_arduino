@@ -38,11 +38,11 @@ class PsaCipherUpdate : public ::testing::Test
 
 TEST_F(PsaCipherUpdate, NullInputArgument)
 {
-	uint8_t input[16] = {0};
+	uint8_t inputs[16] = {0};
 	uint8_t output[16] = {0};
 	size_t output_length = 0;
 	psa_status_t status =
-		psa_cipher_update(&operation, NULL, sizeof(input), output, 16, &output_length);
+		psa_cipher_update(&operation, NULL, sizeof(inputs), output, 16, &output_length);
 	EXPECT_EQ(status, PSA_ERROR_INVALID_ARGUMENT);
 }
 
