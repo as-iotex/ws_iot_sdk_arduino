@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "psacrypto.h"
+#include "PSACrypto.h"
 #include "test_helpers.h"
 
 class PsaCipherDecrypt : public ::testing::Test {

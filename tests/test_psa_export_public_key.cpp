@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <string>
 #include <algorithm>
-#include "psacrypto.h"
+#include "PSACrypto.h"
 #include "test_helpers.h"
 
 class PsaExportPublicKey : public ::testing::Test {

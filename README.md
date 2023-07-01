@@ -83,7 +83,7 @@ Replace <your_board> with the target board/platform for your project (e.g., esp3
 4. Include the PSACrypto library by adding the following line at the top of your file:
 
 ```c++
-# include <psacrypto.h>
+# include <PSACrypto.h>
 ```
 
 For detailed information on using the PSACrypto library, including usage examples and API reference, please refer to the [Documentation](docs/).
