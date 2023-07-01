@@ -29,7 +29,10 @@ jobs:
         uses: arduino/setup-arduino-cli@v1
       
       - name: Add ESP32 package index URL
-        run: arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+        run: | 
+          arduino-cli config init
+          arduino-cli core update-index
+          arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 
       - name: Install platform
         run: |
