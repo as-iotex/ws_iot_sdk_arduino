@@ -1,8 +1,11 @@
 # PSACrypto Library
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![GitHub release](https://img.shields.io/github/release/machinefi/arduino-psa.svg)](https://github.com/machinefi/arduino-psa/releases)
-[![GitHub CI](https://github.com/machinefi/arduino-psa/actions/workflows/ci.yml/badge.svg)](https://github.com/machinefi/arduino-psa/actions/workflows/ci.yml)
+[![GitHub release](https://img.shields.io/github/release/machinefi/psa-crypto.svg)](https://github.com/machinefi/psa-crypto/releases)
+[![Unit Tests](https://github.com/machinefi/psa-crypto/workflows/ci/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/ci.yml)
+[![Arduino CI](https://github.com/machinefi/psa-crypto/workflows/Arduino%20CI/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/arduino-ci.yml)
+[![Code Formatting](https://github.com/machinefi/psa-crypto/workflows/Code%20formatting/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/code-formatting.yml)
+
 
 PSACrypto is an Arduino library that implements the cryptography functionality of the Platform Security Architecture (PSA) API. It provides a standardized and easy-to-use interface for cryptographic operations on Arduino boards, ensuring secure communication, data integrity, and confidentiality.
 
@@ -35,7 +38,7 @@ To install the PSACrypto library using the Arduino IDE, follow these steps:
 
 To install the PSACrypto library manually, follow these steps:
 
-1. Download the PSACrypto library from the [GitHub repository](https://github.com/machinefi/arduino-psa).
+1. Download the PSACrypto library from the [GitHub repository](https://github.com/machinefi/psa-crypto).
 2. Extract the downloaded ZIP file.
 3. Rename the extracted folder to "PSACrypto".
 4. Move the "PSACrypto" folder to your Arduino libraries directory. The default locations are:

@@ -3,7 +3,7 @@
   "description": "An implementation of the Platform Security Architecture Crypto API for Arduino.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/machinefi/arduino-psa"
+    "url": "https://github.com/machinefi/psa-crypto"
   },
   "version": "0.3.1",
   "authors": [
