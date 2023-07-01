@@ -6,7 +6,7 @@ void setup()
 	delay(1000);
 	Serial.println();
 
-	Serial.println("W3bstream SDK example: AES encryption and decryption");
+Serial.println("W3bstream SDK example: AES encryption and decryption");
 	Serial.println("This example shows how to use the W3bstream PSA Crypto API to encrypt and "
 				   "decrypt data using a single shot AES-CTR operation.");
 	Serial.println("--------------------------------------------------------------------\n");
