@@ -321,16 +321,19 @@ inline int iotex_md5_starts( iotex_md5_context *ctx )
 inline int iotex_md5_update( iotex_md5_context *ctx, const unsigned char *input, size_t ilen )
 {
     // TODO return iotex_md5_update_ret( (iotex_md5_context *)ctx, input, ilen );
+    return 0;
 }
 
 inline int iotex_md5_finish( iotex_md5_context *ctx, unsigned char output[16] )
 {
     // TODO return iotex_md5_finish_ret( (iotex_md5_context *)ctx, output );
+    return 0;
 }
 
 inline int iotex_md5( const unsigned char *input, size_t ilen, unsigned char output[16] )
 {
     // TODO return iotex_md5_ret( input, ilen, output[16] );
+    return 0;
 }
 
 /****************************************************************/
@@ -354,21 +357,25 @@ inline void iotex_sha1_clone( iotex_sha1_context *dst, const iotex_sha1_context 
 inline int iotex_sha1_starts( iotex_sha1_context *ctx )
 {
     // TODO return iotex_sha1_starts_ret( (iotex_sha1_context *)ctx );
+    return 0;
 }
 
 inline int iotex_sha1_update( iotex_sha1_context *ctx, const unsigned char *input, size_t ilen )
 {
     // TODO return iotex_sha1_update_ret( (iotex_sha1_context *)ctx, input, ilen );
+    return 0;
 }
 
 inline int iotex_sha1_finish( iotex_sha1_context *ctx, unsigned char output[20] )
 {
     // TODO return iotex_sha1_finish_ret( (iotex_sha1_context *)ctx, output );
+    return 0;
 }
 
 inline int iotex_sha1( const unsigned char *input, size_t ilen, unsigned char output[20] )
 {
     // TODO return iotex_sha1_ret( input, ilen, output );
+    return 0;
 }
 
 /****************************************************************/

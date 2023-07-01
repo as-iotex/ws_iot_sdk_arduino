@@ -167,7 +167,7 @@ typedef struct psa_tls12_prf_key_derivation_s
     /* The 1-based number of the block. */
     uint8_t block_number;
 
-    psa_tls12_prf_key_derivation_state_t (state);
+    psa_tls12_prf_key_derivation_state_t state;
 
     uint8_t *secret;
     size_t secret_length;
