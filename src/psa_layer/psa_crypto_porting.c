@@ -315,6 +315,7 @@ inline void iotex_md5_clone( iotex_md5_context *dst, const iotex_md5_context *sr
 inline int iotex_md5_starts( iotex_md5_context *ctx )
 {
     // TODO return iotex_md5_starts_ret( (iotex_md5_context *)ctx );
+    return 0
 }
 
 inline int iotex_md5_update( iotex_md5_context *ctx, const unsigned char *input, size_t ilen )
@@ -503,21 +504,25 @@ inline void iotex_sha512_clone( iotex_sha512_context *dst, const iotex_sha512_co
 inline int iotex_sha512_starts( iotex_sha512_context *ctx, int is384 )
 {
     // TODO return iotex_sha512_starts_ret( (iotex_sha512_context *)ctx, is384 );
+    return 0;
 }
 
 inline int iotex_sha512_update( iotex_sha512_context *ctx, const unsigned char *input, size_t ilen )
 {
     // TODO return iotex_sha512_update_ret( (iotex_sha512_context *)ctx, input, ilen );
+    return 0;
 }
 
 inline int iotex_sha512_finish( iotex_sha512_context *ctx, unsigned char *output )
 {
     // TODO return iotex_sha512_finish_ret( (iotex_sha512_context *)ctx, output );
+    return 0;
 }
 
 inline int iotex_sha512( const unsigned char *input, size_t ilen, unsigned char *output, int is384 )
 {
     // TODO return iotex_sha512_ret( input, ilen, output, is384 );
+    return 0;
 }
 
 /****************************************************************/
@@ -541,21 +546,25 @@ inline void iotex_ripemd160_clone( iotex_ripemd160_context *dst, const iotex_rip
 inline int iotex_ripemd160_starts( iotex_ripemd160_context *ctx )
 {
     // TODO iotex_ripemd160_starts_ret( (iotex_ripemd160_context *)ctx );
+    return 0;
 }
 
 inline int iotex_ripemd160_update( iotex_ripemd160_context *ctx, const unsigned char *input, size_t ilen )
 {
     // TODO iotex_ripemd160_update_ret( (iotex_ripemd160_context *)ctx, input, ilen );
+    return 0;
 }
 
 inline int iotex_ripemd160_finish( iotex_ripemd160_context *ctx, unsigned char output[20] )
 {
     // TODO iotex_ripemd160_finish_ret( (iotex_ripemd160_context *)ctx, output );
+    return 0;
 }
 
 inline int iotex_ripemd160( const unsigned char *input, size_t ilen, unsigned char output[20] )
 {
     // TODO iotex_ripemd160_ret( input, ilen, output );
+    return 0;
 }
 
 /****************************************************************/
@@ -565,23 +574,27 @@ inline int iotex_cipher_cmac_starts( iotex_cipher_context_t *ctx,
                                 const unsigned char *key, size_t keybits )
 {
     // TODO iotex_cipher_cmac_starts( (iotex_cipher_context_t *)ctx, key, keybits );
+    return 0;
 }
 
 inline int iotex_cipher_cmac_update( iotex_cipher_context_t *ctx,
                                 const unsigned char *input, size_t ilen )
 {
     // TODO iotex_cipher_cmac_update( (iotex_cipher_context_t *)ctx, input, ilen );
+    return 0;
 }
 
 inline int iotex_cipher_cmac_finish( iotex_cipher_context_t *ctx,
                                 unsigned char *output )
 {
     // TODO iotex_cipher_cmac_finish( (iotex_cipher_context_t *)ctx, output );
+    return 0;
 }                                
 
 inline int iotex_cipher_cmac_reset( iotex_cipher_context_t *ctx )
 {
     // TODO iotex_cipher_cmac_reset( (iotex_cipher_context_t *)ctx );
+    return 0;
 }
 
 inline int iotex_cipher_cmac( const iotex_cipher_info_t *cipher_info,
@@ -590,6 +603,7 @@ inline int iotex_cipher_cmac( const iotex_cipher_info_t *cipher_info,
                          unsigned char *output )
 {
     // TODO iotex_cipher_cmac( (iotex_cipher_info_t *)cipher_info, key, keylen, input, ilen, output );
+    return 0;
 }
 
 #if defined(IOTEX_AES_C)
@@ -598,6 +612,7 @@ inline int iotex_aes_cmac_prf_128( const unsigned char *key, size_t key_len,
                               unsigned char output[16] )
 {
     // TODO iotex_aes_cmac_prf_128( key, key_len, input, in_len, output );
+    return 0;
 }
 #endif /* IOTEX_AES_C */
 
@@ -620,6 +635,7 @@ inline int iotex_camellia_setkey_enc( iotex_camellia_context *ctx,
                                  unsigned int keybits )
 {
     // TODO iotex_camellia_setkey_enc( (iotex_camellia_context *)ctx, key, keybits );
+    return 0;
 }
 
 inline int iotex_camellia_setkey_dec( iotex_camellia_context *ctx,
@@ -627,6 +643,7 @@ inline int iotex_camellia_setkey_dec( iotex_camellia_context *ctx,
                                  unsigned int keybits )
 {
     // TODO iotex_camellia_setkey_dec( (iotex_camellia_context *)ctx, key, keybits );
+    return 0;
 }
 
 inline int iotex_camellia_crypt_ecb( iotex_camellia_context *ctx,
@@ -635,6 +652,7 @@ inline int iotex_camellia_crypt_ecb( iotex_camellia_context *ctx,
                     unsigned char output[16] )
 {
     // TODO iotex_camellia_crypt_ecb( (iotex_camellia_context *)ctx, mode, input, output );
+    return 0;
 }
 
 #if defined(IOTEX_CIPHER_MODE_CBC)
@@ -646,6 +664,7 @@ inline int iotex_camellia_crypt_cbc( iotex_camellia_context *ctx,
                     unsigned char *output )
 {
     // TODO iotex_camellia_crypt_cbc( (iotex_camellia_context *)ctx, mode, length, iv, input, output );
+    return 0;
 }
 #endif /* IOTEX_CIPHER_MODE_CBC */
 
@@ -659,6 +678,7 @@ inline int iotex_camellia_crypt_cfb128( iotex_camellia_context *ctx,
                        unsigned char *output )
 {
     // TODO iotex_camellia_crypt_cfb128( (iotex_camellia_context *)ctx, mode, length, iv_off, iv, input, output );
+    return 0;
 }
 #endif /* IOTEX_CIPHER_MODE_CFB */
 
@@ -672,6 +692,7 @@ inline int iotex_camellia_crypt_ctr( iotex_camellia_context *ctx,
                        unsigned char *output )
 {
     // TODO iotex_camellia_crypt_ctr( (iotex_camellia_context *)ctx, length, nc_off, nonce_counter, stream_block, input, output );
+    return 0;
 }
 #endif /* IOTEX_CIPHER_MODE_CTR */
 
@@ -681,16 +702,19 @@ inline int iotex_camellia_crypt_ctr( iotex_camellia_context *ctx,
 inline const int *iotex_cipher_list( void )
 {
     // TODO iotex_cipher_list();
+    return 0;
 }
 
 inline const iotex_cipher_info_t *iotex_cipher_info_from_string( const char *cipher_name )
 {
     // TODO (iotex_cipher_info_t *)(iotex_cipher_info_from_string(cipher_name));
+    return 0;
 }
 
 inline const iotex_cipher_info_t *iotex_cipher_info_from_type( const iotex_cipher_type_t cipher_type )
 {
     // TODO (iotex_cipher_info_t *)(iotex_cipher_info_from_type( (iotex_cipher_type_t)cipher_type));
+    return 0;
 }
 
 const iotex_cipher_info_t *iotex_cipher_info_from_values(const iotex_cipher_id_t cipher_id, int key_bitlen, const iotex_cipher_mode_t mode ) 
@@ -956,6 +980,7 @@ inline int iotex_cipher_reset( iotex_cipher_context_t *ctx )
 inline int iotex_cipher_update_ad( iotex_cipher_context_t *ctx, const unsigned char *ad, size_t ad_len )
 {
     // TODO iotex_cipher_update_ad( (iotex_cipher_context_t *)ctx, ad, ad_len );
+    return 0;
 }
 #endif /* IOTEX_GCM_C || IOTEX_CHACHAPOLY_C */
 
@@ -1304,29 +1329,33 @@ int iotex_cipher_finish( iotex_cipher_context_t *ctx, unsigned char *output, siz
 inline int iotex_cipher_write_tag( iotex_cipher_context_t *ctx, unsigned char *tag, size_t tag_len )
 {
     // TODO iotex_cipher_write_tag( (iotex_cipher_context_t *)ctx, tag, tag_len );
+    return 0;
 }
 
 inline int iotex_cipher_check_tag( iotex_cipher_context_t *ctx, const unsigned char *tag, size_t tag_len )
 {
     // TODO iotex_cipher_check_tag( (iotex_cipher_context_t *)ctx, tag, tag_len );
+    return 0;
 }
 #endif /* IOTEX_GCM_C || IOTEX_CHACHAPOLY_C */
 
 inline int iotex_cipher_crypt( iotex_cipher_context_t *ctx, const unsigned char *iv, size_t iv_len, const unsigned char *input, size_t ilen, unsigned char *output, size_t *olen )
 {
    // TODO iotex_cipher_crypt( (iotex_cipher_context_t *)ctx,  iv, iv_len, input, ilen, output, olen );
+   return 0;
 }
 
 #if defined(IOTEX_CIPHER_MODE_AEAD) || defined(IOTEX_NIST_KW_C)
 inline int iotex_cipher_auth_encrypt_ext( iotex_cipher_context_t *ctx, const unsigned char *iv, size_t iv_len, const unsigned char *ad, size_t ad_len, const unsigned char *input, size_t ilen, unsigned char *output, size_t output_len, size_t *olen, size_t tag_len )
 {
     // TODO iotex_cipher_auth_encrypt_ext( (iotex_cipher_context_t *)ctx, iv, iv_len, ad, ad_len, input, ilen, output, output_len, olen, tag_len);
-
+    return 0;
 }
 
 inline int iotex_cipher_auth_decrypt_ext( iotex_cipher_context_t *ctx, const unsigned char *iv, size_t iv_len, const unsigned char *ad, size_t ad_len, const unsigned char *input, size_t ilen, unsigned char *output, size_t output_len, size_t *olen, size_t tag_len )
 {
     // TODO iotex_cipher_auth_decrypt_ext( (iotex_cipher_context_t *)ctx, iv, iv_len, ad, ad_len, input, ilen, output, output_len, olen, tag_len );
+    return 0;
 }
 #endif
 
@@ -1476,11 +1505,13 @@ inline int iotex_aes_crypt_xts( iotex_aes_xts_context *ctx, int mode, size_t len
 inline int iotex_aes_crypt_cfb128( iotex_aes_context *ctx, int mode, size_t length, size_t *iv_off, unsigned char iv[16], const unsigned char *input, unsigned char *output )
 {
     // TODO iotex_aes_crypt_cfb128( (iotex_aes_context *)ctx, mode, length, iv_off, iv, input, output );
+    return 0;
 }
 
 inline int iotex_aes_crypt_cfb8( iotex_aes_context *ctx, int mode, size_t length, unsigned char iv[16], const unsigned char *input, unsigned char *output )
 {
     // TODO iotex_aes_crypt_cfb8( (iotex_aes_context *)ctx, mode, length, iv, input, output );
+    return 0;
 }
 #endif /*IOTEX_CIPHER_MODE_CFB */
 
@@ -1488,6 +1519,7 @@ inline int iotex_aes_crypt_cfb8( iotex_aes_context *ctx, int mode, size_t length
 int iotex_aes_crypt_ofb( iotex_aes_context *ctx, size_t length, size_t *iv_off, unsigned char iv[16], const unsigned char *input, unsigned char *output )
 {
     // TODO iotex_aes_crypt_ofb( (iotex_aes_context *)ctx, length, iv_off, iv, input, output );
+    return 0;
 }
 #endif /* IOTEX_CIPHER_MODE_OFB */
 
@@ -1521,6 +1553,7 @@ inline int iotex_rsa_set_padding( iotex_rsa_context *ctx, int padding,
                              iotex_md_type_t hash_id )
 {     
     // TODO iotex_rsa_set_padding((iotex_rsa_context *)ctx, padding, hash_id );
+    return 0;
 }
 
 inline int iotex_rsa_import( iotex_rsa_context *ctx,
@@ -1529,6 +1562,7 @@ inline int iotex_rsa_import( iotex_rsa_context *ctx,
                         const iotex_mpi *D, const iotex_mpi *E )
 {
     // TODO iotex_rsa_import( (iotex_rsa_context *)ctx, (iotex_mpi *)N, (iotex_mpi *)P, (iotex_mpi *)Q, (iotex_mpi *)D, (iotex_mpi *)E );
+    return 0;
 }
 
 inline int iotex_rsa_import_raw( iotex_rsa_context *ctx,
@@ -1539,11 +1573,13 @@ inline int iotex_rsa_import_raw( iotex_rsa_context *ctx,
                             unsigned char const *E, size_t E_len )
 {
     // TODO iotex_rsa_import_raw( (iotex_rsa_context *)ctx, N, N_len, P, P_len, Q, Q_len, D, D_len, E, E_len );
+    return 0;
 }
 
 inline int iotex_rsa_complete( iotex_rsa_context *ctx )
 {
     // TODO iotex_rsa_complete( (iotex_rsa_context *)ctx );
+    return 0;
 }
 
 inline int iotex_rsa_export( const iotex_rsa_context *ctx,
@@ -1552,6 +1588,7 @@ inline int iotex_rsa_export( const iotex_rsa_context *ctx,
 {
     // TODO iotex_rsa_export( (iotex_rsa_context *)ctx,
     //                    (iotex_mpi *)N, (iotex_mpi *)P, (iotex_mpi *)Q, (iotex_mpi *)D, (iotex_mpi *)E );
+    return 0;
 }
 
 inline int iotex_rsa_export_raw( const iotex_rsa_context *ctx,
@@ -1562,6 +1599,7 @@ inline int iotex_rsa_export_raw( const iotex_rsa_context *ctx,
                             unsigned char *E, size_t E_len )
 {
     // TODO iotex_rsa_export_raw( (iotex_rsa_context *)ctx, N, N_len, P, P_len, Q, Q_len, D, D_len, E, E_len );
+    return 0;
 }
 
 inline int iotex_rsa_export_crt( const iotex_rsa_context *ctx,
@@ -1569,11 +1607,13 @@ inline int iotex_rsa_export_crt( const iotex_rsa_context *ctx,
 {
     // TODO iotex_rsa_export_crt( (iotex_rsa_context *)ctx,
     //                        (iotex_mpi *)DP, (iotex_mpi *)DQ, (iotex_mpi *)QP );
+    return 0;
 }
 
 inline size_t iotex_rsa_get_len( const iotex_rsa_context *ctx )
 {
     // TODO iotex_rsa_get_len( (iotex_rsa_context *)ctx );
+    return 0;
 }
 
 inline int iotex_rsa_gen_key( iotex_rsa_context *ctx,
@@ -1582,22 +1622,26 @@ inline int iotex_rsa_gen_key( iotex_rsa_context *ctx,
                          unsigned int nbits, int exponent )
 {
     // TODO iotex_rsa_gen_key( (iotex_rsa_context *)ctx, f_rng, p_rng, nbits, exponent );
+    return 0;
 }
 
 inline int iotex_rsa_check_pubkey( const iotex_rsa_context *ctx )
 {
     // TODO iotex_rsa_check_pubkey( (iotex_rsa_context *)ctx );
+    return 0;
 }
 
 inline int iotex_rsa_check_privkey( const iotex_rsa_context *ctx )
 {
     // TODO iotex_rsa_check_privkey( (iotex_rsa_context *)ctx );
+    return 0;
 }
 
 inline int iotex_rsa_check_pub_priv( const iotex_rsa_context *pub,
                                 const iotex_rsa_context *prv )
 {
     // TODO iotex_rsa_check_pub_priv( (iotex_rsa_context *)pub, (iotex_rsa_context *)prv );
+    return 0;
 }
 
 inline int iotex_rsa_public( iotex_rsa_context *ctx,
@@ -1605,6 +1649,7 @@ inline int iotex_rsa_public( iotex_rsa_context *ctx,
                 unsigned char *output )
 {
     // TODO iotex_rsa_public( (iotex_rsa_context *)ctx,  input, output );
+    return 0;
 }
 
 inline int iotex_rsa_private( iotex_rsa_context *ctx,
@@ -1614,6 +1659,7 @@ inline int iotex_rsa_private( iotex_rsa_context *ctx,
                  unsigned char *output )
 {
     // TODO iotex_rsa_private( (iotex_rsa_context *)ctx, f_rng, p_rng, input, output );
+    return 0;
 }
 
 inline int iotex_rsa_pkcs1_encrypt( iotex_rsa_context *ctx,
@@ -1624,6 +1670,7 @@ inline int iotex_rsa_pkcs1_encrypt( iotex_rsa_context *ctx,
                        unsigned char *output )
 {
     // TODO iotex_rsa_pkcs1_encrypt( (iotex_rsa_context *)ctx, f_rng, p_rng, ilen, input, output );
+    return 0;
 }
 
 inline int iotex_rsa_rsaes_pkcs1_v15_encrypt( iotex_rsa_context *ctx,
@@ -1634,6 +1681,7 @@ inline int iotex_rsa_rsaes_pkcs1_v15_encrypt( iotex_rsa_context *ctx,
                                  unsigned char *output )
 {
     // TODO iotex_rsa_rsaes_pkcs1_v15_encrypt( (iotex_rsa_context *)ctx, f_rng, p_rng, ilen, input, output );
+    return 0;
 }
 
 inline int iotex_rsa_rsaes_oaep_encrypt( iotex_rsa_context *ctx,
@@ -1645,6 +1693,7 @@ inline int iotex_rsa_rsaes_oaep_encrypt( iotex_rsa_context *ctx,
                             unsigned char *output )
 {
     // TODO iotex_rsa_rsaes_oaep_encrypt( (iotex_rsa_context *)ctx, f_rng, p_rng, label, label_len, ilen, input, output );
+    return 0;
 }
 
 inline int iotex_rsa_pkcs1_decrypt( iotex_rsa_context *ctx,
@@ -1656,6 +1705,7 @@ inline int iotex_rsa_pkcs1_decrypt( iotex_rsa_context *ctx,
                        size_t output_max_len )
 {
     // TODO iotex_rsa_pkcs1_decrypt( (iotex_rsa_context *)ctx, f_rng, p_rng, olen, input, output, output_max_len );
+    return 0;
 }
 
 inline int iotex_rsa_rsaes_pkcs1_v15_decrypt( iotex_rsa_context *ctx,
@@ -1667,6 +1717,7 @@ inline int iotex_rsa_rsaes_pkcs1_v15_decrypt( iotex_rsa_context *ctx,
                                  size_t output_max_len )
 {
     // TODO iotex_rsa_rsaes_pkcs1_v15_decrypt( (iotex_rsa_context *)ctx, f_rng, p_rng, olen, input, output, output_max_len );
+    return 0;
 }
 
 inline int iotex_rsa_rsaes_oaep_decrypt( iotex_rsa_context *ctx,
@@ -1679,6 +1730,7 @@ inline int iotex_rsa_rsaes_oaep_decrypt( iotex_rsa_context *ctx,
                             size_t output_max_len )
 {
     // TODO iotex_rsa_rsaes_oaep_decrypt( (iotex_rsa_context *)ctx, f_rng, p_rng, label, label_len, olen, input, output, output_max_len );
+    return 0;
 }
 
 inline int iotex_rsa_pkcs1_sign( iotex_rsa_context *ctx,
@@ -1690,6 +1742,7 @@ inline int iotex_rsa_pkcs1_sign( iotex_rsa_context *ctx,
                     unsigned char *sig )
 {
     // TODO iotex_rsa_pkcs1_sign( (iotex_rsa_context *)ctx, f_rng, p_rng, (iotex_md_type_t) md_alg, hashlen, hash, sig );
+    return 0;
 }
 
 inline int iotex_rsa_rsassa_pkcs1_v15_sign( iotex_rsa_context *ctx,
@@ -1701,6 +1754,7 @@ inline int iotex_rsa_rsassa_pkcs1_v15_sign( iotex_rsa_context *ctx,
                                unsigned char *sig )
 {
     // TODO iotex_rsa_rsassa_pkcs1_v15_sign( (iotex_rsa_context *)ctx, f_rng, p_rng, (iotex_md_type_t) md_alg, hashlen, hash, sig );
+    return 0;
 }
 
 inline int iotex_rsa_rsassa_pss_sign_ext( iotex_rsa_context *ctx,
@@ -1713,6 +1767,7 @@ inline int iotex_rsa_rsassa_pss_sign_ext( iotex_rsa_context *ctx,
                          unsigned char *sig )
 {
     // TODO iotex_rsa_rsassa_pss_sign_ext( (iotex_rsa_context *)ctx, f_rng, p_rng, (iotex_md_type_t) md_alg, hashlen, hash, saltlen, sig );
+    return 0;
 }
 
 inline int iotex_rsa_rsassa_pss_sign( iotex_rsa_context *ctx,
@@ -1724,6 +1779,7 @@ inline int iotex_rsa_rsassa_pss_sign( iotex_rsa_context *ctx,
                          unsigned char *sig )
 {
     // TODO iotex_rsa_rsassa_pss_sign( (iotex_rsa_context *)ctx, f_rng, p_rng, (iotex_md_type_t) md_alg, hashlen, hash, sig );
+    return 0;
 }
 
 inline int iotex_rsa_pkcs1_verify( iotex_rsa_context *ctx,
@@ -1733,6 +1789,7 @@ inline int iotex_rsa_pkcs1_verify( iotex_rsa_context *ctx,
                       const unsigned char *sig )
 {
     // TODO iotex_rsa_pkcs1_verify( (iotex_rsa_context *)ctx, (iotex_md_type_t) md_alg, hashlen, hash, sig );
+    return 0;
 }
 
 inline int iotex_rsa_rsassa_pkcs1_v15_verify( iotex_rsa_context *ctx,
@@ -1742,6 +1799,7 @@ inline int iotex_rsa_rsassa_pkcs1_v15_verify( iotex_rsa_context *ctx,
                                  const unsigned char *sig )
 {
     // TODO iotex_rsa_rsassa_pkcs1_v15_verify( (iotex_rsa_context *)ctx, (iotex_md_type_t) md_alg, hashlen, hash, sig );
+    return 0;
 }
 
 inline int iotex_rsa_rsassa_pss_verify( iotex_rsa_context *ctx,
@@ -1751,6 +1809,7 @@ inline int iotex_rsa_rsassa_pss_verify( iotex_rsa_context *ctx,
                            const unsigned char *sig )
 {
     // TODO iotex_rsa_rsassa_pss_verify( (iotex_rsa_context *)ctx, (iotex_md_type_t) md_alg, hashlen, hash, sig );
+    return 0;
 }
 
 inline int iotex_rsa_rsassa_pss_verify_ext( iotex_rsa_context *ctx,
@@ -1762,11 +1821,13 @@ inline int iotex_rsa_rsassa_pss_verify_ext( iotex_rsa_context *ctx,
                                const unsigned char *sig )
 {
     // TODO iotex_rsa_rsassa_pss_verify_ext( (iotex_rsa_context *)ctx, (iotex_md_type_t) md_alg, hashlen, hash, (iotex_md_type_t) mgf1_hash_id, expected_salt_len, sig );
+    return 0;
 }
 
 inline int iotex_rsa_copy( iotex_rsa_context *dst, const iotex_rsa_context *src )
 {
     // TODO iotex_rsa_copy( (iotex_rsa_context *)dst, (iotex_rsa_context *)src );
+    return 0;
 }
 
 inline void iotex_rsa_free( iotex_rsa_context *ctx )
@@ -1785,11 +1846,13 @@ inline void iotex_mpi_init( iotex_mpi *X )
 inline int iotex_mpi_write_binary( const iotex_mpi *X, unsigned char *buf, size_t buflen )
 {
     // TODO iotex_mpi_write_binary( (iotex_mpi *)X, buf, buflen );
+    return 0;
 }
 
 inline int iotex_mpi_read_binary( iotex_mpi *X, const unsigned char *buf, size_t buflen )
 {
     // TODO iotex_mpi_read_binary( (iotex_mpi *)X, buf, buflen );
+    return 0;
 }
 
 inline void iotex_mpi_free( iotex_mpi *X )
@@ -1936,6 +1999,7 @@ inline int iotex_ecdsa_sign( iotex_ecp_group *grp, iotex_mpi *r, iotex_mpi *s,
                 int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
 {
     // TODO iotex_ecdsa_sign(grp, r, s, d, buf, blen, f_rng, p_rng);
+    return 0;
 }
 
 inline int iotex_ecdsa_sign_det_ext( iotex_ecp_group *grp, iotex_mpi *r,
@@ -1946,6 +2010,7 @@ inline int iotex_ecdsa_sign_det_ext( iotex_ecp_group *grp, iotex_mpi *r,
                             void *p_rng_blind )
 {
     // TODO iotex_ecdsa_sign_det_ext( (iotex_ecp_group *)grp, (iotex_mpi *)r, (iotex_mpi *)s, (iotex_mpi *)d, buf, blen, (iotex_md_type_t) md_alg, f_rng_blind, p_rng_blind );
+    return 0;
 }
 
 inline int iotex_ecdsa_verify( iotex_ecp_group *grp,
@@ -1953,7 +2018,8 @@ inline int iotex_ecdsa_verify( iotex_ecp_group *grp,
                           const iotex_ecp_point *Q, const iotex_mpi *r,
                           const iotex_mpi *s)
 {
-    // TODO iotex_ecdsa_verify( (iotex_ecp_group *)grp, buf, blen, (iotex_ecp_point *)Q, (iotex_mpi *)r, (iotex_mpi *)s);    
+    // TODO iotex_ecdsa_verify( (iotex_ecp_group *)grp, buf, blen, (iotex_ecp_point *)Q, (iotex_mpi *)r, (iotex_mpi *)s);
+    return 0;  
 }
 
 #else

@@ -136,7 +136,7 @@ typedef struct
     unsigned int info_set : 1;
     uint8_t output_block[PSA_HASH_MAX_SIZE];
     uint8_t prk[PSA_HASH_MAX_SIZE];
-    struct psa_mac_operation_s (hmac);
+    struct psa_mac_operation_s hmac;
 } psa_hkdf_key_derivation_t;
 #endif /* IOTEX_PSA_BUILTIN_ALG_HKDF ||
           IOTEX_PSA_BUILTIN_ALG_HKDF_EXTRACT ||
