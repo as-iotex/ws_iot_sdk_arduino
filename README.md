@@ -1,13 +1,18 @@
+# TODO
+
+Semantic commits
+Semantic release automation
+
 # PSACrypto Library
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub release](https://img.shields.io/github/release/machinefi/psa-crypto.svg)](https://github.com/machinefi/psa-crypto/releases)
 [![Unit Tests](https://github.com/machinefi/psa-crypto/workflows/Run%20unit%20tests/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/ci.yml)
 [![Arduino CI](https://github.com/machinefi/psa-crypto/workflows/Arduino%20CI/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/arduino-ci.yml)
-[![Code Formatting](https://github.com/machinefi/psa-crypto/workflows/Code%20formatting/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/code-formatting.yml)
+[![Code Formatt ing](https://github.com/machinefi/psa-crypto/workflows/Code%20formatting/badge.svg)](https://github.com/machinefi/psa-crypto/actions/workflows/code-formatting.yml)
 
 
-PSACrypto is an Arduino library that implements the cryptography functionality of the Platform Security Architecture (PSA) API. It provides a standardized and easy-to-use interface for cryptographic operations on Arduino boards, ensuring secure communication, data integrity, and confidentiality.
+PSACrypto is an Arduino library that implements the cryptography functionality of the Platform Security Architecture (PSA) API. It provides a standardized and easy-to-use interface for cr yptographic operations on Arduino boards, ensuring secure communication, data integrity, and confidentiality.
 
 ## Features
 
