@@ -18,12 +18,12 @@ jobs:
           release-type: simple
           package-name: release-please-action
       
-      - uses: actions/checkout@v2
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+      # - uses: actions/checkout@v2
+      # - name: Setup upterm session
+      #   uses: lhotari/action-upterm@v1
       
-      - name: Update library.properties
-        run: |
-          cd ${{ github.workspace }}
-          version=$(git describe --tags --abbrev=0)
-          sed -i "s/^version=.*/version=${version}/" library.properties
+      # - name: Update library.properties
+      #   run: |
+      #     cd ${{ github.workspace }}
+      #     version=$(git describe --tags --abbrev=0)
+      #     sed -i "s/^version=.*/version=${version}/" library.properties
