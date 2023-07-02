@@ -18,9 +18,10 @@ jobs:
           release-type: simple
           package-name: release-please-action
       
+      - uses: actions/checkout@v2
       - name: Setup upterm session
         uses: lhotari/action-upterm@v1
-        
+      
       - name: Update library.properties
         run: |
           cd ${{ github.workspace }}
