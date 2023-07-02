@@ -17,8 +17,9 @@ jobs:
         with:
           release-type: simple
           package-name: release-please-action
-          
+      
       - name: Update library.properties
         run: |
+          cd ${{ github.workspace }}
           version=$(git describe --tags --abbrev=0)
           sed -i "s/^version=.*/version=${version}/" library.properties
