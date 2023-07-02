@@ -17,6 +17,8 @@ jobs:
         with:
           release-type: simple
           package-name: release-please-action
+          extra-files: |
+            library.properties
       
       # - uses: actions/checkout@v2
       # - name: Setup upterm session
